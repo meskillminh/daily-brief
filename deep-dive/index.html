@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Deep Dive — Saturday, 10/10/2026</title>
+<style>
+:root {
+  --bg: #f6f5f1; --card: #ffffff; --text: #1d1d1f; --muted: #6b6b70; --line: #e4e2dc;
+  --accent: #0b6e4f; --accent-soft: #e3f1ec; --concept: #fff6e0; --concept-line: #f0d9a0;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121214; --card: #1c1c1f; --text: #ececef; --muted: #9a9aa2; --line: #2c2c31;
+    --accent: #4cc39a; --accent-soft: #173229; --concept: #2a2415; --concept-line: #5a4a24;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+.wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 64px; }
+header h1 { font-size: 1.6rem; margin: 0 0 4px; letter-spacing: -0.01em; }
+.date { color: var(--muted); margin: 0 0 16px; }
+.overview { font-size: 1.05rem; margin: 0 0 20px; }
+nav {
+  position: sticky; top: 0; z-index: 1; background: var(--bg);
+  display: flex; gap: 8px; overflow-x: auto; padding: 10px 0; margin-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+nav a {
+  flex: none; text-decoration: none; color: var(--text); background: var(--card);
+  border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: .9rem;
+}
+.concept {
+  background: var(--concept); border: 1px solid var(--concept-line); border-radius: 14px;
+  padding: 16px 18px; margin: 16px 0 8px;
+}
+.concept .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.concept h2 { margin: 4px 0 8px; font-size: 1.2rem; }
+.concept p { margin: 0 0 8px; }
+.concept .eg { font-size: .9rem; color: var(--muted); margin: 0; }
+.concept .eg a { color: var(--accent); }
+section h2 { font-size: 1.25rem; margin: 32px 0 12px; scroll-margin-top: 64px; }
+.card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+  padding: 14px 16px; margin: 0 0 12px;
+}
+.meta { font-size: .8rem; color: var(--muted); margin-bottom: 4px; }
+.card h3 { font-size: 1.05rem; margin: 0 0 8px; line-height: 1.4; }
+.card h3 a { color: var(--text); text-decoration: none; }
+.card h3 a:hover { text-decoration: underline; }
+.card p { margin: 0 0 6px; font-size: .95rem; }
+.card .q { color: var(--muted); font-style: italic; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.actions a {
+  text-decoration: none; font-size: .88rem; padding: 6px 12px; border-radius: 8px;
+  background: var(--accent-soft); color: var(--accent); font-weight: 600;
+}
+footer { color: var(--muted); font-size: .85rem; margin-top: 40px; text-align: center; }
+</style></head><body><div class="wrap">
+<header><h1>📚 Deep Dive</h1>
+<p class="date">Saturday, 10/10/2026 · 9 bài · ⏱ khoảng 87 phút</p></header>
+<nav><a href="#business">🧠 Mô hình kinh doanh</a><a href="#marketing">📣 Marketing</a><a href="#growth">📈 Growth</a><a href="#finance">💵 Tài chính</a></nav>
+<section id="business"><h2>🧠 Mô hình kinh doanh</h2>
+<article class="card">
+<div class="meta">#1 · Trends.vc · ⏱ 13 phút</div>
+<h3><a href="https://trends.vc/how-did-4-people-reach-1m-arr-with-no-ad-spend/" target="_blank" rel="noopener">📣 How Did 4 People Reach $1M ARR With No Ad Spend?</a></h3>
+<p>💡 Bài kể lại hành trình một nhóm nhỏ đưa Plausible lên 1M ARR mà không chi tiền quảng cáo, kèm các tín hiệu xu hướng về công cụ AI và mô hình &#x27;bring your own key&#x27; — đáng đọc vì cho thấy tăng trưởng hữu cơ trông thực tế ra sao.</p>
+<p>🧠 Giai đoạn đầu gần như luôn chậm và khó chịu; nếu kênh tăng trưởng không dựa vào ngân sách quảng cáo thì bạn phải kiên nhẫn đủ lâu để sản phẩm và tiếng truyền miệng tự tích lũy.</p>
+<p class="q">❓ Nếu ngày mai ngân hàng bạn cắt toàn bộ ngân sách marketing trả phí, sản phẩm của bạn còn kênh tăng trưởng tự nhiên nào đủ sống?</p>
+</article>
+<article class="card">
+<div class="meta">#2 · Trends.vc · ⏱ 13 phút</div>
+<h3><a href="https://trends.vc/what-did-20000-and-1-server-turn-into/" target="_blank" rel="noopener">🖥️ What Did $20,000 and 1 Server Turn Into?</a></h3>
+<p>💡 Bản tin tổng hợp các công cụ và case study của founder, trong đó có bài học về kinh tế của mô hình thu phí theo năm và cách xây một SaaS bền vững từ nguồn lực nhỏ, cùng dự đoán rằng các nền tảng tạo game bằng AI sẽ phải giới hạn hoặc thu phí vì chi phí tính toán cho mỗi người dùng quá lớn.</p>
+<p>🧠 Một sản phẩm chỉ bền khi đơn vị kinh tế của nó dương: nếu mỗi lần người dùng sử dụng đều tốn chi phí, mô hình miễn phí không giới hạn sẽ sớm phải thay đổi.</p>
+<p class="q">❓ Với các tính năng ngân hàng số hay AI mà bạn đang làm, chi phí phát sinh trên mỗi lần người dùng sử dụng là bao nhiêu và mô hình doanh thu nào giúp nó không &#x27;âm&#x27; khi quy mô tăng?</p>
+</article>
+<article class="card">
+<div class="meta">#3 · Trends.vc · ⏱ 14 phút</div>
+<h3><a href="https://trends.vc/ai-game-generators-play-feeds-creator-payouts-genre-makers/" target="_blank" rel="noopener">AI Game Generators: Play Feeds, Creator Payouts, Genre Makers</a></h3>
+<p>💡 Bài phân tích làn sóng công cụ tạo game bằng AI: hộp prompt, feed người chơi, cơ chế trả tiền cho người sáng tạo, cùng các rủi ro chi phí và bản quyền — một ca nghiên cứu sống động về mô hình kinh doanh quanh nội dung do AI sinh ra.</p>
+<p>🧠 Khi mỗi lượt dùng sản phẩm AI đều phát sinh chi phí thật, mô hình miễn phí không giới hạn có thể khiến bạn lỗ trên từng người dùng, nên giới hạn và cách tính phí phải được thiết kế ngay từ đầu.</p>
+<p class="q">❓ Trong các tính năng AI bạn đang làm, chi phí biến đổi trên mỗi người dùng là bao nhiêu và cơ chế giới hạn nào đang bảo vệ biên lợi nhuận?</p>
+</article>
+</section>
+<section id="marketing"><h2>📣 Marketing</h2>
+<article class="card">
+<div class="meta">#4 · Demand Curve · ⏱ 8 phút</div>
+<h3><a href="https://www.demandcurve.com/newsletters/growth-newsletter-349" target="_blank" rel="noopener">Vitamins vs painkillers, 500K AI citations, and end your ads on emotion.</a></h3>
+<p>💡 Bài viết bàn về việc nhiều sản phẩm tốt vẫn thua đối thủ kém hơn chỉ vì kể câu chuyện giá trị dở hơn, phân biệt sản phẩm &#x27;vitamin&#x27; và &#x27;thuốc giảm đau&#x27;, cùng cách kết thúc quảng cáo bằng cảm xúc muốn để lại cho người đọc.</p>
+<p>🧠 Chiến thắng trên thị trường thường thuộc về bên diễn đạt giá trị rõ ràng nhất và giải quyết một nỗi đau cấp bách, chứ không nhất thiết là bên có sản phẩm tốt hơn.</p>
+<p class="q">❓ Tính năng bạn đang phát triển là &#x27;vitamin&#x27; hay &#x27;thuốc giảm đau&#x27; với khách hàng ngân hàng số, và bạn đang diễn đạt giá trị đó bằng một câu như thế nào?</p>
+</article>
+<article class="card">
+<div class="meta">#5 · Demand Curve · ⏱ 7 phút</div>
+<h3><a href="https://www.demandcurve.com/newsletters/growth-newsletter-347" target="_blank" rel="noopener">The visuals that belong on your landing page, how to tell whether your differentiator will last, and why pricing low can leave you unable to afford customers.</a></h3>
+<p>💡 Số newsletter này gom ba chủ đề: hình ảnh nào nên có trên landing page, cách đánh giá lợi thế khác biệt của bạn có bền không, và vì sao định giá quá thấp khiến bạn không đủ tiền để đi mua khách hàng.</p>
+<p>🧠 Giá không chỉ là con số khách trả mà là ngân sách bạn có để tiếp cận khách tiếp theo; định giá thấp có thể tự khóa cửa kênh tăng trưởng của chính mình.</p>
+<p class="q">❓ Với mức giá/phí hiện tại của sản phẩm bạn phụ trách, bạn còn dư bao nhiêu để chi cho việc có thêm một khách hàng mới?</p>
+</article>
+</section>
+<section id="growth"><h2>📈 Growth</h2>
+<article class="card">
+<div class="meta">#6 · Elena&#x27;s Growth Scoop · ⏱ 1 phút</div>
+<h3><a href="https://www.elenaverna.com/p/congrats-your-sales-problems-in-plg" target="_blank" rel="noopener">Congrats, your sales problems in PLG are completely unoriginal</a></h3>
+<p>💡 Elena Verna liệt kê những cuộc tranh luận lặp đi lặp lại khi công ty PLG bắt đầu bán cho doanh nghiệp, dưới dạng một tấm bingo các vấn đề quen thuộc của ngành.</p>
+<p>🧠 Phần lớn vấn đề khi ghép product-led với sales không hề độc nhất; nhận ra nó là mẫu hình chung giúp bạn khỏi phí thời gian phát minh lại cách chữa.</p>
+<p class="q">❓ Ở ngân hàng số của bạn, xung đột nào giữa luồng tự phục vụ và đội bán hàng đang lặp lại mà bạn vẫn coi là &#x27;chuyện riêng của công ty mình&#x27;?</p>
+</article>
+<article class="card">
+<div class="meta">#7 · Elena&#x27;s Growth Scoop · ⏱ 2 phút</div>
+<h3><a href="https://www.elenaverna.com/p/how-to-give-away-free-product-and" target="_blank" rel="noopener">How to give away free product and make money doing it</a></h3>
+<p>💡 Bài lập luận rằng cho dùng sản phẩm miễn phí vẫn là đòn bẩy tăng trưởng lớn nhất của Lovable, dù là sản phẩm AI tốn chi phí mỗi lần dùng, trong khi nhiều công ty vì lo biên lợi nhuận lại giấu đi đúng phần khách cần trải nghiệm.</p>
+<p>🧠 Nếu khách phải cảm nhận giá trị trước khi trả tiền, việc khóa trải nghiệm cốt lõi để bảo vệ biên lợi nhuận thường giết luôn doanh thu tương lai.</p>
+<p class="q">❓ Khoảnh khắc &#x27;aha&#x27; trong sản phẩm của bạn có đang nằm sau một bức tường đăng ký, phí hay quy trình duyệt nào không?</p>
+</article>
+<article class="card">
+<div class="meta">#8 · Elena&#x27;s Growth Scoop · ⏱ 12 phút</div>
+<h3><a href="https://www.elenaverna.com/p/how-to-survive-a-double-life-as-an" target="_blank" rel="noopener">How to survive a double life as an operator-creator</a></h3>
+<p>💡 Tác giả chia sẻ cách sống &#x27;hai cuộc đời&#x27; vừa làm toàn thời gian vừa sáng tạo nội dung, và những quy tắc tự đặt ra để hai vai trò bổ trợ nhau thay vì xung đột.</p>
+<p>🧠 Kinh nghiệm thực chiến từ công việc chính làm nội dung của bạn đáng tin hơn, còn việc viết ra buộc bạn hệ thống hóa suy nghĩ thành framework và xây sẵn một kênh phân phối cho riêng mình.</p>
+<p class="q">❓ Bạn có thể bắt đầu viết lại những gì học được khi làm sản phẩm ở ngân hàng số theo nhịp nào, và đâu là ranh giới bạn tự đặt để không xung đột với công việc hiện tại?</p>
+</article>
+</section>
+<section id="finance"><h2>💵 Tài chính</h2>
+<article class="card">
+<div class="meta">#9 · Damodaran, Musings on Markets · ⏱ 17 phút</div>
+<h3><a href="https://aswathdamodaran.blogspot.com/feeds/7150312064125095195/comments/default" target="_blank" rel="noopener">Stock Prices, Earnings and Cashflows: The AI Effect plays through!</a></h3>
+<p>💡 Damodaran phân tích vì sao giá cổ phiếu vẫn tăng dù lãi suất trái phiếu kho bạc tăng mạnh, bằng cách truy ngược lợi nhuận doanh nghiệp theo ngành và dòng tiền trên bảng cân đối kế toán.</p>
+<p>🧠 Muốn hiểu một thị trường hay một con số tăng trưởng, hãy truy ngược về nguồn gốc của lợi nhuận và dòng tiền thay vì chấp nhận câu chuyện bề mặt.</p>
+<p class="q">❓ Nếu một chỉ số của sản phẩm bạn đang tăng, bạn đã truy được nó đến từ nhóm người dùng hay nguồn doanh thu cụ thể nào chưa?</p>
+</article>
+</section>
+<p class="date">Tuần này chưa có bài cho: 📊 Thị trường, 🛠 Builders.</p>
+<footer>Còn 8 bài trong hàng đợi.</footer>
+</div></body></html>

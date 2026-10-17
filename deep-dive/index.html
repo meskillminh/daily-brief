@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Deep Dive — Saturday, 17/10/2026</title>
+<style>
+:root {
+  --bg: #f6f5f1; --card: #ffffff; --text: #1d1d1f; --muted: #6b6b70; --line: #e4e2dc;
+  --accent: #0b6e4f; --accent-soft: #e3f1ec; --concept: #fff6e0; --concept-line: #f0d9a0;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121214; --card: #1c1c1f; --text: #ececef; --muted: #9a9aa2; --line: #2c2c31;
+    --accent: #4cc39a; --accent-soft: #173229; --concept: #2a2415; --concept-line: #5a4a24;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+.wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 64px; }
+header h1 { font-size: 1.6rem; margin: 0 0 4px; letter-spacing: -0.01em; }
+.date { color: var(--muted); margin: 0 0 16px; }
+.overview { font-size: 1.05rem; margin: 0 0 20px; }
+nav {
+  position: sticky; top: 0; z-index: 1; background: var(--bg);
+  display: flex; gap: 8px; overflow-x: auto; padding: 10px 0; margin-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+nav a {
+  flex: none; text-decoration: none; color: var(--text); background: var(--card);
+  border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: .9rem;
+}
+.concept {
+  background: var(--concept); border: 1px solid var(--concept-line); border-radius: 14px;
+  padding: 16px 18px; margin: 16px 0 8px;
+}
+.concept .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.concept h2 { margin: 4px 0 8px; font-size: 1.2rem; }
+.concept p { margin: 0 0 8px; }
+.concept .eg { font-size: .9rem; color: var(--muted); margin: 0; }
+.concept .eg a { color: var(--accent); }
+section h2 { font-size: 1.25rem; margin: 32px 0 12px; scroll-margin-top: 64px; }
+.card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+  padding: 14px 16px; margin: 0 0 12px;
+}
+.meta { font-size: .8rem; color: var(--muted); margin-bottom: 4px; }
+.card h3 { font-size: 1.05rem; margin: 0 0 8px; line-height: 1.4; }
+.card h3 a { color: var(--text); text-decoration: none; }
+.card h3 a:hover { text-decoration: underline; }
+.card p { margin: 0 0 6px; font-size: .95rem; }
+.card .q { color: var(--muted); font-style: italic; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.actions a {
+  text-decoration: none; font-size: .88rem; padding: 6px 12px; border-radius: 8px;
+  background: var(--accent-soft); color: var(--accent); font-weight: 600;
+}
+footer { color: var(--muted); font-size: .85rem; margin-top: 40px; text-align: center; }
+</style></head><body><div class="wrap">
+<header><h1>📚 Deep Dive</h1>
+<p class="date">Saturday, 17/10/2026 · 6 bài · ⏱ khoảng 82 phút</p></header>
+<nav><a href="#business">🧠 Mô hình kinh doanh</a><a href="#marketing">📣 Marketing</a><a href="#growth">📈 Growth</a><a href="#finance">💵 Tài chính</a></nav>
+<section id="business"><h2>🧠 Mô hình kinh doanh</h2>
+<article class="card">
+<div class="meta">#1 · Trends.vc · ⏱ 13 phút</div>
+<h3><a href="https://trends.vc/how-did-a-200-customer-turn-into-3-5m-arr/" target="_blank" rel="noopener">🚀 How Did a $200 Customer Turn Into $3.5M ARR?</a></h3>
+<p>💡 Bản tin tổng hợp các công cụ, tin thắng lợi của cộng đồng founder và một case study SaaS đạt 3,5 triệu USD ARR khởi đi từ một khách hàng 200 USD, cùng dự đoán về việc các cỗ máy trả lời AI sẽ phạt những quảng cáo viết cho crawler thay vì cho người đọc — đáng đọc vì nó cho thấy cách quan sát thị trường và kênh phân phối mới cùng lúc.</p>
+<p>🧠 Một khách hàng nhỏ đầu tiên có thể là hạt giống của cả một dòng doanh thu, và mọi kênh phân phối mới (kể cả viết cho AI) đều có cửa sổ ngắn trước khi nền tảng siết lại.</p>
+<p class="q">❓ Khách hàng nhỏ nào hiện tại của sản phẩm ngân hàng số bạn đang xem nhẹ, nhưng thực ra đại diện cho một phân khúc có thể nhân rộng?</p>
+</article>
+<article class="card">
+<div class="meta">#2 · Trends.vc · ⏱ 15 phút</div>
+<h3><a href="https://trends.vc/ai-fortune-telling-apps-the-margin-flip-coffee-cup-readings-korean-playbook/" target="_blank" rel="noopener">AI Fortune-Telling Apps: The Margin Flip, Coffee-Cup Readings, Korean Playbook</a></h3>
+<p>💡 Bài phân tích ngành ứng dụng bói toán bằng AI: vì sao biên lợi nhuận nhảy lên khoảng 90% so với 45–55% của chuyên gia người thật, case Tight Saju tăng trưởng mạnh tại Hàn Quốc, rủi ro Apple từ chối loại app này, và những hình thức xem bói có nhu cầu tìm kiếm nhưng chưa ai làm.</p>
+<p>🧠 Khi AI biến một dịch vụ tính theo phút của con người thành một lần gọi API, cấu trúc biên lợi nhuận của cả ngành lật ngược — nhưng rủi ro nền tảng phân phối (App Store) có thể xóa sổ mô hình trong một đêm.</p>
+<p class="q">❓ Trong sản phẩm của bạn, tác vụ nào đang do con người xử lý theo thời gian mà AI có thể làm với chi phí gần như cố định, và bạn phụ thuộc vào nền tảng nào có quyền tắt bạn?</p>
+</article>
+<article class="card">
+<div class="meta">#3 · Trends.vc · ⏱ 13 phút</div>
+<h3><a href="https://trends.vc/how-do-ai-products-build-moats-that-last/" target="_blank" rel="noopener">🏰 How Do AI Products Build Moats That Last?</a></h3>
+<p>💡 Số bản tin xoay quanh câu hỏi sản phẩm AI xây hào kinh tế bền vững bằng cách nào, kèm bài luận cho rằng &#x27;hào mới cũng chính là hào cũ&#x27;, phần kinh tế đơn vị của SaaS và dự đoán về làn sóng startup bán quảng cáo trong dòng chờ của coding agent sẽ chết trước khi bị chặn.</p>
+<p>🧠 Lợi thế bền vững không đến từ việc bám vào một khe hở kỹ thuật trên nền tảng người khác sở hữu, mà từ những hào cũ quen thuộc như phân phối, dữ liệu và chi phí chuyển đổi — và một offer tốt hơn luôn ăn đứt quảng cáo tốt hơn.</p>
+<p class="q">❓ Nếu ngày mai mô hình AI bạn đang dùng trở nên miễn phí và ai cũng có, điều gì còn lại khiến khách hàng ở lại với sản phẩm của bạn?</p>
+</article>
+</section>
+<section id="marketing"><h2>📣 Marketing</h2>
+<article class="card">
+<div class="meta">#4 · Demand Curve · ⏱ 14 phút</div>
+<h3><a href="https://www.demandcurve.com/newsletters/growth-newsletter-348" target="_blank" rel="noopener">How I got 900k+ impressions from just 10 social posts.</a></h3>
+<p>💡 Bài kể lại một thử nghiệm nội dung: từ 15 phút quay thô tạo ra 7 bài đăng trên 5 định dạng, dùng AI cho kịch bản, cắt dựng và bản nháp, cộng cách xây kho hơn 400 ý tưởng chủ đề.</p>
+<p>🧠 Nút thắt của làm nội dung thường là biên tập và lên lịch chứ không phải ý tưởng, nên hãy thiết kế quy trình &#x27;ghi một lần, tái sử dụng nhiều lần&#x27; thay vì cố sản xuất nhiều hơn.</p>
+<p class="q">❓ Nếu bạn phải xây thương hiệu cá nhân cho tương lai khởi nghiệp mà chỉ có vài giờ mỗi tuần, quy trình tái sử dụng nội dung của bạn sẽ trông thế nào?</p>
+</article>
+</section>
+<section id="growth"><h2>📈 Growth</h2>
+<article class="card">
+<div class="meta">#5 · Elena&#x27;s Growth Scoop · ⏱ 11 phút</div>
+<h3><a href="https://www.elenaverna.com/p/what-on-earth-is-going-on-with-ai" target="_blank" rel="noopener">What on earth is going on with AI pricing and packaging?</a></h3>
+<p>💡 Elena Verna mổ xẻ sự hỗn loạn của trang giá sản phẩm AI: các gói hứa &#x27;gấp 5 lần&#x27; mà không nói gấp 5 lần cái gì, bán hàng trăm triệu token mà người mua không biết token mua được gì, thậm chí có nơi bỏ luôn trang giá — và nghịch lý là họ vẫn tăng trưởng bùng nổ.</p>
+<p>🧠 Định giá theo đơn vị nội bộ (token, credit) khiến khách hàng không thể tự quyết định nên mua gói nào; đóng gói nên neo vào giá trị mà người mua hiểu được, dù thị trường nóng tạm thời tha thứ cho sự mơ hồ.</p>
+<p class="q">❓ Nếu khách hàng của bạn phải tự chọn gói mà không hỏi sales, họ có đủ thông tin để biết mình cần gói nào không — hay bạn đang bán bằng đơn vị chỉ đội ngũ bạn hiểu?</p>
+</article>
+</section>
+<section id="finance"><h2>💵 Tài chính</h2>
+<article class="card">
+<div class="meta">#6 · Damodaran, Musings on Markets · ⏱ 16 phút</div>
+<h3><a href="https://aswathdamodaran.blogspot.com/feeds/6106553853569811480/comments/default" target="_blank" rel="noopener">Interest Rates and Stock Prices: An Old Debate Flares up!</a></h3>
+<p>💡 Damodaran lùi lại khỏi tin tức hằng ngày để nhìn lợi suất trái phiếu chính phủ Mỹ trong bối cảnh dài hạn và so sánh quốc tế, rồi bàn vì sao lãi suất cao không luôn kéo giá cổ phiếu xuống và tác động khác nhau theo ngành và từng doanh nghiệp.</p>
+<p>🧠 Quan hệ giữa lãi suất và giá trị doanh nghiệp không phải một chiều; hiểu vì sao mới giúp bạn nhìn đúng định giá và chi phí vốn thay vì phản ứng theo tiêu đề.</p>
+<p class="q">❓ Mảng sản phẩm bạn đang phụ trách sẽ chịu ảnh hưởng thế nào nếu mặt bằng lãi suất duy trì ở mức cao lâu dài?</p>
+</article>
+</section>
+<p class="date">Tuần này chưa có bài cho: 📊 Thị trường, 🛠 Builders.</p>
+<footer>Còn 5 bài trong hàng đợi.</footer>
+</div></body></html>

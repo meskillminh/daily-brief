@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Deep Dive — Saturday, 24/10/2026</title>
+<style>
+:root {
+  --bg: #f6f5f1; --card: #ffffff; --text: #1d1d1f; --muted: #6b6b70; --line: #e4e2dc;
+  --accent: #0b6e4f; --accent-soft: #e3f1ec; --concept: #fff6e0; --concept-line: #f0d9a0;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121214; --card: #1c1c1f; --text: #ececef; --muted: #9a9aa2; --line: #2c2c31;
+    --accent: #4cc39a; --accent-soft: #173229; --concept: #2a2415; --concept-line: #5a4a24;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+.wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 64px; }
+header h1 { font-size: 1.6rem; margin: 0 0 4px; letter-spacing: -0.01em; }
+.date { color: var(--muted); margin: 0 0 16px; }
+.overview { font-size: 1.05rem; margin: 0 0 20px; }
+nav {
+  position: sticky; top: 0; z-index: 1; background: var(--bg);
+  display: flex; gap: 8px; overflow-x: auto; padding: 10px 0; margin-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+nav a {
+  flex: none; text-decoration: none; color: var(--text); background: var(--card);
+  border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: .9rem;
+}
+.concept {
+  background: var(--concept); border: 1px solid var(--concept-line); border-radius: 14px;
+  padding: 16px 18px; margin: 16px 0 8px;
+}
+.concept .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.concept h2 { margin: 4px 0 8px; font-size: 1.2rem; }
+.concept p { margin: 0 0 8px; }
+.concept .eg { font-size: .9rem; color: var(--muted); margin: 0; }
+.concept .eg a { color: var(--accent); }
+section h2 { font-size: 1.25rem; margin: 32px 0 12px; scroll-margin-top: 64px; }
+.card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+  padding: 14px 16px; margin: 0 0 12px;
+}
+.meta { font-size: .8rem; color: var(--muted); margin-bottom: 4px; }
+.card h3 { font-size: 1.05rem; margin: 0 0 8px; line-height: 1.4; }
+.card h3 a { color: var(--text); text-decoration: none; }
+.card h3 a:hover { text-decoration: underline; }
+.card p { margin: 0 0 6px; font-size: .95rem; }
+.card .q { color: var(--muted); font-style: italic; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.actions a {
+  text-decoration: none; font-size: .88rem; padding: 6px 12px; border-radius: 8px;
+  background: var(--accent-soft); color: var(--accent); font-weight: 600;
+}
+footer { color: var(--muted); font-size: .85rem; margin-top: 40px; text-align: center; }
+</style></head><body><div class="wrap">
+<header><h1>📚 Deep Dive</h1>
+<p class="date">Saturday, 24/10/2026 · 6 bài · ⏱ khoảng 80 phút</p></header>
+<nav><a href="#business">🧠 Mô hình kinh doanh</a><a href="#marketing">📣 Marketing</a><a href="#growth">📈 Growth</a><a href="#finance">💵 Tài chính</a></nav>
+<section id="business"><h2>🧠 Mô hình kinh doanh</h2>
+<article class="card">
+<div class="meta">#1 · Trends.vc · ⏱ 14 phút</div>
+<h3><a href="https://trends.vc/data-for-cash-apps-paid-chores-dead-startup-data-consent-lawsuits/" target="_blank" rel="noopener">Data-for-Cash Apps: Paid Chores, Dead-Startup Data, Consent Lawsuits</a></h3>
+<p>💡 Bài viết mổ xẻ làn sóng ứng dụng trả tiền cho người dùng để thu thập dữ liệu riêng tư (cuộc gọi, ảnh, video, việc nhà) rồi bán lại cho các phòng lab AI, kèm các vấn đề về đồng thuận và kiện tụng — rất đáng đọc khi dữ liệu người dùng đang thành một loại hàng hóa có giá.</p>
+<p>🧠 Khi nguồn tài nguyên công khai cạn kiệt, giá trị dịch chuyển sang dữ liệu độc quyền mà bạn có quyền truy cập hợp pháp — nhưng mô hình chỉ bền nếu sự đồng thuận và chia sẻ lợi ích với người đóng góp được làm đàng hoàng.</p>
+<p class="q">❓ Ngân hàng số của bạn đang nắm những dữ liệu hành vi độc quyền nào, và bạn sẽ thiết kế cơ chế đồng thuận, chia sẻ giá trị ra sao nếu muốn khai thác chúng?</p>
+</article>
+<article class="card">
+<div class="meta">#2 · Trends.vc · ⏱ 13 phút</div>
+<h3><a href="https://trends.vc/what-turns-a-20-idea-into-a-20-million-business/" target="_blank" rel="noopener">💡 What Turns a $20 Idea Into a $20 Million Business?</a></h3>
+<p>💡 Bản tin tổng hợp công cụ, các moat SaaS còn lại trong kỷ nguyên AI, và một dự đoán về rủi ro bảo mật khi agent AI dùng chung add-on trong không gian làm việc của cả đội.</p>
+<p>🧠 Ý tưởng rẻ, chỉ có thực thi và hào bảo vệ (moat) mới biến nó thành doanh nghiệp lớn — và mọi tiện ích mở rộng bạn cho phép đều là một bề mặt rủi ro cần được kiểm duyệt trước.</p>
+<p class="q">❓ Nếu đội bạn đưa AI agent vào quy trình sản phẩm, bạn sẽ dựng danh sách công cụ được phê duyệt và quy trình duyệt như thế nào?</p>
+</article>
+</section>
+<section id="marketing"><h2>📣 Marketing</h2>
+<article class="card">
+<div class="meta">#3 · Demand Curve · ⏱ 7 phút</div>
+<h3><a href="https://www.demandcurve.com/newsletters/growth-newsletter-351" target="_blank" rel="noopener">Narrow to grow, take-back pricing, change the axis.</a></h3>
+<p>💡 Bài phân tích ba đòn bẩy tăng trưởng: thu hẹp thị trường để lớn hơn, đổi trục cạnh tranh thay vì so kè cùng tiêu chí, và dùng chương trình thu hồi (take-back) để biện minh cho giá cao hơn.</p>
+<p>🧠 Tăng trưởng thường đến từ việc chọn một nhóm hẹp và một trục giá trị khác biệt, chứ không phải nói to hơn trên cùng trục mà đối thủ đang thắng.</p>
+<p class="q">❓ Sản phẩm của bạn đang cạnh tranh trên trục nào, và nếu phải thu hẹp xuống một phân khúc khách hàng duy nhất thì đó là ai?</p>
+</article>
+<article class="card">
+<div class="meta">#4 · Demand Curve · ⏱ 7 phút</div>
+<h3><a href="https://www.demandcurve.com/newsletters/growth-newsletter-350" target="_blank" rel="noopener">Onboarding forms, funding paid tests, and backing your incumbent into a corner.</a></h3>
+<p>💡 Số bản tin hướng dẫn cách làm người dùng hoàn tất form onboarding, cách cấp ngân sách đủ để một bài test trả phí cho kết luận đáng tin, và cách dồn đối thủ dẫn đầu vào thế khó.</p>
+<p>🧠 Thử nghiệm thiếu ngân sách thì không cho kết luận, và mỗi bước onboarding thừa là một chỗ rò rỉ người dùng — kỷ luật đo lường quan trọng ngang ý tưởng.</p>
+<p class="q">❓ Bước nào trong onboarding của bạn đang rụng nhiều người nhất, và thử nghiệm gần nhất của bạn có đủ mẫu để kết luận không?</p>
+</article>
+</section>
+<section id="growth"><h2>📈 Growth</h2>
+<article class="card">
+<div class="meta">#5 · Elena&#x27;s Growth Scoop · ⏱ 15 phút</div>
+<h3><a href="https://www.elenaverna.com/p/im-not-doing-996" target="_blank" rel="noopener">I&#x27;m not doing 996.</a></h3>
+<p>💡 Tác giả, một lãnh đạo tăng trưởng ở công ty AI và là mẹ hai con, phản bác văn hóa &quot;996&quot; đang được tôn vinh như huy hiệu danh dự trong ngành.</p>
+<p>🧠 Làm việc chăm chỉ khác với làm việc mọi lúc; sức bền và ưu tiên rõ ràng mới là thứ giữ bạn trong cuộc chơi dài, nhất là khi muốn khởi nghiệp.</p>
+<p class="q">❓ Bạn đang lấy chỉ số gì để đo hiệu quả công việc của mình — số giờ bỏ ra hay kết quả tạo ra?</p>
+</article>
+</section>
+<section id="finance"><h2>💵 Tài chính</h2>
+<article class="card">
+<div class="meta">#6 · Damodaran, Musings on Markets · ⏱ 24 phút</div>
+<h3><a href="https://aswathdamodaran.blogspot.com/feeds/944961536080525397/comments/default" target="_blank" rel="noopener">From Eyeballs to Annual Run Rates (ARR): Buzzy Pricing Metrics and the Anthropic Trade!</a></h3>
+<p>💡 Damodaran so sánh ARR mà giới AI đang dùng với các chỉ số thời bong bóng dot-com như &quot;eyeballs&quot; và số người dùng, chỉ ra rằng cách tính và cách quy đổi năm có thể làm con số lệch rất xa.</p>
+<p>🧠 Mọi chỉ số &quot;thời thượng&quot; đều cần được truy ngược về định nghĩa và cách tính trước khi dùng để so sánh hay định giá.</p>
+<p class="q">❓ Chỉ số tăng trưởng chủ lực bạn báo cáo lên ban lãnh đạo được định nghĩa chính xác ra sao, và nó có thể bị &quot;làm đẹp&quot; ở chỗ nào?</p>
+</article>
+</section>
+<p class="date">Tuần này chưa có bài cho: 📊 Thị trường, 🛠 Builders.</p>
+<footer>Còn 5 bài trong hàng đợi.</footer>
+</div></body></html>

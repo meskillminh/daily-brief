@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Deep Dive — Saturday, 31/10/2026</title>
+<style>
+:root {
+  --bg: #f6f5f1; --card: #ffffff; --text: #1d1d1f; --muted: #6b6b70; --line: #e4e2dc;
+  --accent: #0b6e4f; --accent-soft: #e3f1ec; --concept: #fff6e0; --concept-line: #f0d9a0;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121214; --card: #1c1c1f; --text: #ececef; --muted: #9a9aa2; --line: #2c2c31;
+    --accent: #4cc39a; --accent-soft: #173229; --concept: #2a2415; --concept-line: #5a4a24;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+.wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 64px; }
+header h1 { font-size: 1.6rem; margin: 0 0 4px; letter-spacing: -0.01em; }
+.date { color: var(--muted); margin: 0 0 16px; }
+.overview { font-size: 1.05rem; margin: 0 0 20px; }
+nav {
+  position: sticky; top: 0; z-index: 1; background: var(--bg);
+  display: flex; gap: 8px; overflow-x: auto; padding: 10px 0; margin-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+nav a {
+  flex: none; text-decoration: none; color: var(--text); background: var(--card);
+  border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: .9rem;
+}
+.concept {
+  background: var(--concept); border: 1px solid var(--concept-line); border-radius: 14px;
+  padding: 16px 18px; margin: 16px 0 8px;
+}
+.concept .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.concept h2 { margin: 4px 0 8px; font-size: 1.2rem; }
+.concept p { margin: 0 0 8px; }
+.concept .eg { font-size: .9rem; color: var(--muted); margin: 0; }
+.concept .eg a { color: var(--accent); }
+section h2 { font-size: 1.25rem; margin: 32px 0 12px; scroll-margin-top: 64px; }
+.card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+  padding: 14px 16px; margin: 0 0 12px;
+}
+.meta { font-size: .8rem; color: var(--muted); margin-bottom: 4px; }
+.card h3 { font-size: 1.05rem; margin: 0 0 8px; line-height: 1.4; }
+.card h3 a { color: var(--text); text-decoration: none; }
+.card h3 a:hover { text-decoration: underline; }
+.card p { margin: 0 0 6px; font-size: .95rem; }
+.card .q { color: var(--muted); font-style: italic; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.actions a {
+  text-decoration: none; font-size: .88rem; padding: 6px 12px; border-radius: 8px;
+  background: var(--accent-soft); color: var(--accent); font-weight: 600;
+}
+footer { color: var(--muted); font-size: .85rem; margin-top: 40px; text-align: center; }
+</style></head><body><div class="wrap">
+<header><h1>📚 Deep Dive</h1>
+<p class="date">Saturday, 31/10/2026 · 6 bài · ⏱ khoảng 77 phút</p></header>
+<nav><a href="#business">🧠 Mô hình kinh doanh</a><a href="#growth">📈 Growth</a></nav>
+<section id="business"><h2>🧠 Mô hình kinh doanh</h2>
+<article class="card">
+<div class="meta">#1 · Trends.vc · ⏱ 13 phút</div>
+<h3><a href="https://trends.vc/how-do-you-reach-50m-arr-with-fewer-than-50-people/" target="_blank" rel="noopener">⚡ How Do You Reach $50M ARR With Fewer Than 50 People?</a></h3>
+</article>
+<article class="card">
+<div class="meta">#2 · Trends.vc · ⏱ 14 phút</div>
+<h3><a href="https://trends.vc/reverse-engineered-apps-price-hike-rebuilds-clone-the-clone-trojan-repos/" target="_blank" rel="noopener">Reverse-Engineered Apps: Price-Hike Rebuilds, Clone The Clone, Trojan Repos</a></h3>
+</article>
+<article class="card">
+<div class="meta">#3 · Trends.vc · ⏱ 14 phút</div>
+<h3><a href="https://trends.vc/ai-ad-networks-rented-inventory-shrinking-seconds-brand-fact-audits/" target="_blank" rel="noopener">AI Ad Networks: Rented Inventory, Shrinking Seconds, Brand-Fact Audits</a></h3>
+</article>
+</section>
+<section id="growth"><h2>📈 Growth</h2>
+<article class="card">
+<div class="meta">#4 · Elena&#x27;s Growth Scoop · ⏱ 9 phút</div>
+<h3><a href="https://www.elenaverna.com/p/dear-new-york-times-thats-not-what" target="_blank" rel="noopener">Here is what women want from AI.</a></h3>
+</article>
+<article class="card">
+<div class="meta">#5 · Elena&#x27;s Growth Scoop · ⏱ 16 phút</div>
+<h3><a href="https://www.elenaverna.com/p/what-its-like-to-work-at-an-ai-native" target="_blank" rel="noopener">What it’s like to work at an AI-native company</a></h3>
+<p>💡 Tác giả mô tả cảm giác làm việc ở một công ty AI-native, nơi cách tổ chức — vai trò, ra quyết định, luồng thông tin, ý nghĩa của chức vụ cao — thay đổi vì AI được mặc định là một phần của công ty.</p>
+<p>🧠 Lợi thế từ AI không đến từ việc gắn thêm công cụ vào mô hình tổ chức cũ, mà từ việc thiết kế lại cách làm việc dựa trên giả định AI luôn hiện diện.</p>
+<p class="q">❓ Nếu công ty tương lai của bạn được thiết kế AI-native từ ngày đầu, vai trò PM như bạn sẽ còn làm những việc gì?</p>
+</article>
+<article class="card">
+<div class="meta">#6 · Elena&#x27;s Growth Scoop · ⏱ 11 phút</div>
+<h3><a href="https://www.elenaverna.com/p/pricing-constitution" target="_blank" rel="noopener">Your company needs a pricing constitution.</a></h3>
+</article>
+</section>
+<p class="date">Tuần này chưa có bài cho: 📊 Thị trường, 📣 Marketing, 💵 Tài chính, 🛠 Builders.</p>
+<footer>Còn 3 bài trong hàng đợi.</footer>
+</div></body></html>

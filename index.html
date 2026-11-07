@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Daily Brief — Saturday, 07/11/2026</title>
+<style>
+:root {
+  --bg: #f6f5f1; --card: #ffffff; --text: #1d1d1f; --muted: #6b6b70; --line: #e4e2dc;
+  --accent: #0b6e4f; --accent-soft: #e3f1ec; --concept: #fff6e0; --concept-line: #f0d9a0;
+  --up: #0f7a45; --up-soft: #dff2e7; --down: #b3261e; --down-soft: #f9e1df;
+  --warn: #9a6200; --warn-soft: #fbefd6; --flat: #2d5fa8; --flat-soft: #e2ebf8;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121214; --card: #1c1c1f; --text: #ececef; --muted: #9a9aa2; --line: #2c2c31;
+    --accent: #4cc39a; --accent-soft: #173229; --concept: #2a2415; --concept-line: #5a4a24;
+    --up: #4fc98a; --up-soft: #16301f; --down: #f2867d; --down-soft: #3a1b19;
+    --warn: #e8b45a; --warn-soft: #33270f; --flat: #8fb3ec; --flat-soft: #1a2638;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+.wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 64px; }
+header h1 { font-size: 1.6rem; margin: 0 0 4px; letter-spacing: -0.01em; }
+.date { color: var(--muted); margin: 0 0 16px; }
+.overview { font-size: 1.05rem; margin: 0 0 20px; }
+nav {
+  position: sticky; top: 0; z-index: 1; background: var(--bg);
+  display: flex; gap: 8px; overflow-x: auto; padding: 10px 0; margin-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+nav a {
+  flex: none; text-decoration: none; color: var(--text); background: var(--card);
+  border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: .9rem;
+}
+.concept {
+  background: var(--concept); border: 1px solid var(--concept-line); border-radius: 14px;
+  padding: 16px 18px; margin: 16px 0 8px;
+}
+.concept .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.concept h2 { margin: 4px 0 8px; font-size: 1.2rem; }
+.concept p { margin: 0 0 8px; }
+.concept .eg { font-size: .9rem; color: var(--muted); margin: 0; }
+.concept .eg a { color: var(--accent); }
+section h2 { font-size: 1.25rem; margin: 32px 0 12px; scroll-margin-top: 64px; }
+.card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+  padding: 14px 16px; margin: 0 0 12px;
+}
+.meta { font-size: .8rem; color: var(--muted); margin-bottom: 4px; }
+.card h3 { font-size: 1.05rem; margin: 0 0 8px; line-height: 1.4; }
+.card h3 a { color: var(--text); text-decoration: none; }
+.card h3 a:hover { text-decoration: underline; }
+.card p { margin: 0 0 6px; font-size: .95rem; }
+.card .q { color: var(--muted); font-style: italic; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.actions a {
+  text-decoration: none; font-size: .88rem; padding: 6px 12px; border-radius: 8px;
+  background: var(--accent-soft); color: var(--accent); font-weight: 600;
+}
+.money { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; margin: 16px 0 8px; }
+.money .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.money h2 { margin: 4px 0 6px; font-size: 1.2rem; scroll-margin-top: 64px; }
+.money h3 { font-size: .95rem; margin: 18px 0 8px; }
+.money p { margin: 0 0 8px; font-size: .95rem; }
+.pills { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 4px; }
+.pill { font-size: .78rem; padding: 3px 10px; border-radius: 999px; background: var(--flat-soft); color: var(--flat); }
+.pill.warn { background: var(--warn-soft); color: var(--warn); }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; margin-top: 12px; }
+.kpi { border: 1px solid var(--line); border-top: 3px solid var(--flat); border-radius: 10px; padding: 8px 10px; }
+.kpi.up { border-top-color: var(--up); } .kpi.down { border-top-color: var(--down); }
+.kpi .k { font-size: .75rem; color: var(--muted); }
+.kpi .v { font-weight: 700; font-variant-numeric: tabular-nums; }
+.kpi .c { font-size: .8rem; font-variant-numeric: tabular-nums; }
+.up-t { color: var(--up); } .down-t { color: var(--down); } .flat-t { color: var(--muted); }
+.bars { font-size: .85rem; font-variant-numeric: tabular-nums; }
+.bars .g { font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 10px 0 4px; }
+.bar { display: grid; grid-template-columns: minmax(84px, 30%) 1fr 64px; align-items: center; gap: 8px; padding: 3px 0; }
+.bar .n { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bar .track { position: relative; height: 12px; border-left: 0; }
+.bar .track::before { content: ""; position: absolute; left: 50%; top: -3px; bottom: -3px; border-left: 1px solid var(--line); }
+.bar .fill { position: absolute; top: 0; height: 100%; border-radius: 3px; }
+.bar .fill.up { left: 50%; background: var(--up); } .bar .fill.down { right: 50%; background: var(--down); }
+.bar .pct { text-align: right; }
+.bar.approx { opacity: .6; }
+.flows { width: 100%; border-collapse: collapse; font-size: .88rem; }
+.flows td { padding: 6px 4px; border-top: 1px solid var(--line); vertical-align: top; }
+.flows td:first-child { white-space: nowrap; font-weight: 600; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.box { border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; font-size: .88rem; }
+.box ul { margin: 4px 0 0; padding-left: 18px; }
+.money ol { margin: 0; padding-left: 20px; font-size: .92rem; }
+.small { font-size: .8rem; color: var(--muted); }
+.small a { color: var(--muted); }
+.insights { width: 100%; border-collapse: collapse; font-size: .92rem; background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.insights th, .insights td { text-align: left; padding: 10px 12px; border-top: 1px solid var(--line); vertical-align: top; }
+.insights th { border-top: 0; font-size: .8rem; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+.closing { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
+.closing ul { margin: 0 0 10px; padding-left: 20px; }
+@media (max-width: 480px) { .cols { grid-template-columns: 1fr; } }
+footer { color: var(--muted); font-size: .85rem; margin-top: 40px; text-align: center; }
+</style></head><body><div class="wrap">
+<header><h1>🗞 Daily Brief</h1>
+<p class="date">Saturday, 07/11/2026 · 27 tin chọn lọc từ 121 tiêu đề</p>
+<p class="overview">Thị trường toàn cầu đang định giá lại rủi ro của cơn sốt AI: cổ phiếu công nghệ Mỹ bán tháo, lợi suất trái phiếu CoreWeave vượt 16%, trong khi vàng vượt 4.100 USD và Anh bất ngờ tăng lãi suất — tiền đang đắt lên chứ không rẻ đi. Ở Việt Nam, bức tranh ngược chiều: USD hạ nhiệt 2,8%, P/E VN-Index về 11 lần, nhưng ngân hàng phải đua lãi suất huy động và nợ xấu phân hóa — nghĩa là cuộc chơi 2027 sẽ là chi phí vốn và chất lượng tài sản, không phải tăng trưởng bằng mọi giá.</p>
+</header>
+<nav>
+<a href="#concept">💡 Concept</a>
+<a href="#must_know">🌍 Must know</a>
+<a href="#business">🧠 How business works</a>
+<a href="#opportunities">🚀 Money &amp; opportunities</a>
+<a href="#work">🏦 Your work</a>
+<a href="#insights">🧭 Insight</a>
+</nav>
+<div class="concept" id="concept">
+<div class="label">Concept of the day</div>
+<h2>Churn &amp; Promotional Acquisition (tỷ lệ rời bỏ và chi phí mua khách bằng khuyến mãi)</h2>
+<p>Churn là tỷ lệ khách hàng rời đi sau khi bạn đã bỏ tiền để có được họ. Khi một ngân hàng nhỏ hút tiền gửi bằng lãi suất ưu đãi, họ đang &#x27;mua&#x27; khách bằng giá — giống các app luyện thi bán gói sát ngày thi rồi bị huỷ ngay sau đó. Vấn đề là dòng tiền đó rất dễ bay khi hết khuyến mãi, nên giá trị vòng đời khách hàng (LTV) thực tế thấp hơn nhiều so với chi phí thu hút (CAC). Khách hàng chỉ thực sự có giá trị khi họ ở lại vì lý do khác giá: tài khoản lương, thanh toán, thẻ, thói quen. Vì vậy chỉ số đáng theo dõi không phải &#x27;huy động tăng bao nhiêu&#x27; mà &#x27;bao nhiêu phần trăm số dư còn lại sau 6–12 tháng khi lãi suất ưu đãi kết thúc&#x27;.</p>
+<p class="eg">Ví dụ hôm nay: <a href="https://vnexpress.net/lai-suat-tang-ngan-hang-nao-hut-nhieu-tien-gui-nhat-5137948.html" target="_blank" rel="noopener">Lãi suất tăng, ngân hàng nào hút nhiều tiền gửi nhất?</a></p>
+</div>
+<section id="must_know"><h2>🌍 Must know</h2>
+<article class="card">
+<div class="meta">#1 · VnEconomy Thế giới</div>
+<h3><a href="https://vneconomy.vn/chung-khoan-my-giam-manh-nhat-hon-1-nam-ruoi-gia-dau-bat-tang-tro-lai.htm" target="_blank" rel="noopener">Chứng khoán Mỹ giảm mạnh nhất hơn 1 năm rưỡi, giá dầu bật tăng trở lại</a></h3>
+<p>💡 Bán tháo lan từ cổ phiếu công nghệ sang toàn thị trường, Nasdaq dẫn đầu đà giảm mạnh nhất hơn một năm rưỡi.</p>
+<p>🧠 Khi một chủ đề đầu tư (AI) chiếm tỷ trọng quá lớn trong chỉ số, rủi ro riêng lẻ biến thành rủi ro hệ thống — đa dạng hóa trên giấy không đồng nghĩa đa dạng hóa thật.</p>
+<p class="q">❓ Nếu dòng vốn quốc tế rút khỏi tài sản rủi ro trong 6 tháng, kế hoạch gọi vốn hoặc ngân sách sản phẩm của bạn thay đổi thế nào?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261107_1">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261107_1">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#2 · CNBC Finance</div>
+<h3><a href="https://www.cnbc.com/2026/11/06/coreweave-bond-yield-tops-16percent-as-ai-credit-stress-rises.html" target="_blank" rel="noopener">The AI ‘credit card’ is getting costlier as CoreWeave bond yield tops 16%</a></h3>
+<p>💡 Lợi suất trái phiếu CoreWeave vượt 16% cho thấy thị trường nợ đang nghi ngờ khả năng hoàn vốn của hạ tầng AI.</p>
+<p>🧠 Thị trường trái phiếu thường phát tín hiệu trước thị trường cổ phiếu: chi phí vay là bài kiểm tra thật nhất cho một mô hình kinh doanh thâm dụng vốn.</p>
+<p class="q">❓ Trong sản phẩm của bạn, khoản đầu tư nào đang được tài trợ bằng kỳ vọng tương lai hơn là bằng dòng tiền hiện tại?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261107_2">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261107_2">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#3 · VnExpress Kinh Doanh</div>
+<h3><a href="https://vnexpress.net/lai-suat-tang-ngan-hang-nao-hut-nhieu-tien-gui-nhat-5137948.html" target="_blank" rel="noopener">Lãi suất tăng, ngân hàng nào hút nhiều tiền gửi nhất?</a></h3>
+<p>💡 VPBank, Sacombank vượt nhóm quốc doanh về tăng trưởng tiền gửi, ngân hàng nhỏ bứt tốc nhờ ưu đãi lãi suất.</p>
+<p>🧠 Huy động bằng giá là cách nhanh nhất để tăng số dư và cũng là cách đắt nhất để giữ khách; tiền gửi bền vững đến từ tài khoản lương, thanh toán và thẻ chứ không từ lãi suất khuyến mãi.</p>
+<p class="q">❓ Nếu bạn phụ trách tăng trưởng tiền gửi, bạn đo lường &#x27;chất lượng&#x27; của một đồng huy động mới bằng chỉ số nào?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261107_3">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261107_3">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#4 · VnExpress Kinh Doanh</div>
+<h3><a href="https://vnexpress.net/gia-usd-ngan-hang-giam-2-8-trong-ba-thang-5141708.html" target="_blank" rel="noopener">Giá USD ngân hàng giảm 2,8% trong ba tháng</a></h3>
+<p>💡 Giá USD ngân hàng giảm 2,8% trong ba tháng, về 25.780 đồng — áp lực tỷ giá hạ nhiệt rõ rệt.</p>
+<p>🧠 Tỷ giá ổn định nới dư địa cho chính sách tiền tệ trong nước và giảm chi phí nhập khẩu; với ngân hàng số, nó ảnh hưởng trực tiếp đến biên lợi nhuận của chuyển tiền quốc tế và chi tiêu thẻ ở nước ngoài.</p>
+<p class="q">❓ Sản phẩm ngoại tệ của bạn đang kiếm tiền từ chênh lệch tỷ giá hay từ phí minh bạch — và cái nào bền hơn khi cạnh tranh tăng?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261107_4">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261107_4">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#5 · VnEconomy Thế giới</div>
+<h3><a href="https://vneconomy.vn/anh-tang-lai-suat-lan-dau-ke-tu-nam-2023-de-ngo-kha-nang-tang-tiep.htm" target="_blank" rel="noopener">Anh tăng lãi suất lần đầu kể từ năm 2023, để ngỏ khả năng tăng tiếp</a></h3>
+<p>💡 BOE tăng lãi suất lần đầu kể từ 2023 lên 4% và để ngỏ khả năng tăng tiếp.</p>
+<p>🧠 Chu kỳ nới lỏng toàn cầu không còn là mặc định; doanh nghiệp nên lập kế hoạch với kịch bản tiền đắt kéo dài thay vì chờ lãi suất giảm.</p>
+<p class="q">❓ Mô hình tài chính của sản phẩm bạn đang giả định mức lãi suất nào, và nó vỡ ở ngưỡng nào?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261107_5">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261107_5">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#6 · Reuters</div>
+<h3><a href="https://www.reuters.com/business/us-job-growth-beats-expectations-october-unemployment-rate-falls-41-2026-11-06/" target="_blank" rel="noopener">US labor market regains ground as job growth surges, unemployment rate falls to 4.1%</a></h3>
+<p>💡 Việc làm Mỹ tăng mạnh, thất nghiệp về 4,1% — làm giảm kỳ vọng Fed cắt lãi suất sớm.</p>
+<p>🧠 Dữ liệu lao động mạnh là tin tốt cho người lao động nhưng là tin xấu cho tài sản rủi ro; hiểu được &#x27;tin tốt là tin xấu&#x27; giúp đọc thị trường chính xác hơn.</p>
+<p class="q">❓ Nếu Fed giữ lãi suất cao lâu hơn dự kiến, dòng vốn ngoại vào Việt Nam sẽ ảnh hưởng gì tới kế hoạch của bạn?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261107_6">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261107_6">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#7 · VnEconomy Thế giới</div>
+<h3><a href="https://vneconomy.vn/trung-quoc-siet-xuat-khau-tungsten-gay-suc-ep-len-chuoi-cung-ung-ai.htm" target="_blank" rel="noopener">Trung Quốc siết xuất khẩu tungsten, gây sức ép lên chuỗi cung ứng AI</a></h3>
+<p>💡 Trung Quốc siết xuất khẩu tungsten, gây gián đoạn linh kiện mũi khoan siêu nhỏ dùng trong chuỗi cung ứng AI.</p>
+<p>🧠 Nút thắt chuỗi cung ứng thường nằm ở một linh kiện rẻ tiền mà không ai để ý — quyền lực đàm phán thuộc về kẻ kiểm soát nút thắt, không phải kẻ có doanh thu lớn nhất.</p>
+<p class="q">❓ Trong chuỗi giá trị sản phẩm của bạn, nhà cung cấp nào bạn không thể thay thế trong 90 ngày?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261107_7">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261107_7">💬 Hỏi thêm</a>
+</div></article>
+</section>
+<section id="business"><h2>🧠 How business works</h2>
+<article class="card">
+<div class="meta">#8 · SEA Startups</div>
+<h3><a href="https://theinvestor.vn/vietnamese-banks-see-mixed-trends-in-bad-debt-d20389.html" target="_blank" rel="noopener">Vietnamese banks see mixed trends in bad debt</a></h3>
+<p>💡 Nợ xấu các ngân hàng Việt Nam phân hóa rõ rệt giữa các nhà băng.</p>
+<p>🧠 Trong ngân hàng, tăng trưởng tín dụng nhanh luôn trả giá bằng nợ xấu 12–24 tháng sau; so sánh ngân hàng phải nhìn cặp chỉ số tăng trưởng và tỷ lệ bao phủ nợ xấu cùng lúc.</p>
+<p class="q">❓ Nếu bạn làm sản phẩm cho vay số, bạn sẽ chấp nhận tỷ lệ nợ xấu bao nhiêu để đổi lấy tốc độ tăng trưởng, và ai trong tổ chức chịu trách nhiệm con số đó?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261107_8">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261107_8">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#9 · CafeF</div>
+<h3><a href="https://cafef.vn/mot-tin-hieu-la-bat-ngo-xuat-hien-tren-ttck-sau-3-nam-188261106154712795.chn" target="_blank" rel="noopener">Một &quot;tín hiệu lạ&quot; bất ngờ xuất hiện trên TTCK sau 3 năm</a></h3>
+<p>💡 P/E của VN-Index về 11,05 lần, giảm hơn 10% so với tháng trước và thấp hơn hẳn trung bình.</p>
+<p>🧠 P/E thấp có thể là cơ hội hoặc là thị trường đang dự báo lợi nhuận tương lai sẽ giảm — định giá luôn phải đọc cùng kỳ vọng tăng trưởng lợi nhuận.</p>
+<p class="q">❓ Nếu bạn là CFO, mức định giá này ảnh hưởng thế nào tới quyết định huy động vốn cổ phần hay vay nợ?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261107_9">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261107_9">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#10 · VnEconomy Thế giới</div>
+<h3><a href="https://vneconomy.vn/nhieu-doanh-nghiep-van-tai-nho-cua-my-pha-san-vi-gia-dau-diesel-cao.htm" target="_blank" rel="noopener">Nhiều doanh nghiệp vận tải nhỏ của Mỹ phá sản vì giá dầu diesel cao</a></h3>
+<p>💡 Nhiều doanh nghiệp vận tải nhỏ tại Mỹ phá sản vì giá diesel cao.</p>
+<p>🧠 Mô hình kinh doanh biên lợi nhuận mỏng chết trước khi thị trường suy thoái — chỉ cần một dòng chi phí đầu vào tăng là unit economics âm.</p>
+<p class="q">❓ Chi phí biến đổi lớn nhất trong sản phẩm của bạn là gì, và nó tăng bao nhiêu phần trăm thì bạn lỗ trên mỗi khách hàng?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261107_10">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261107_10">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#11 · The Economist</div>
+<h3><a href="https://www.economist.com/finance-and-economics/2026/11/05/markets-realise-they-hate-americas-blue-wave" target="_blank" rel="noopener">Markets realise they hate America’s blue wave</a></h3>
+<p>💡 Nhà đầu tư lo ngại thế đa số mới của đảng Dân chủ sẽ làm chậm cơn bùng nổ AI, trong bối cảnh 41 cuộc bỏ phiếu liên quan trung tâm dữ liệu.</p>
+<p>🧠 Rủi ro chính sách là một biến số định giá thật: khi hạ tầng cần đất, điện và giấy phép địa phương, chính trị địa phương trở thành rào cản tăng trưởng.</p>
+<p class="q">❓ Sản phẩm của bạn phụ thuộc vào quy định nào mà nếu thay đổi sẽ xoá sạch lợi thế hiện tại?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261107_11">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261107_11">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#12 · CafeF</div>
+<h3><a href="https://cafef.vn/mot-dai-gia-dau-khi-bat-ngo-nang-ke-hoach-loi-nhuan-gap-9-lan-lai-quy-4-se-gay-bat-ngo-188261107001452602.chn" target="_blank" rel="noopener">Một &quot;đại gia&quot; dầu khí bất ngờ nâng kế hoạch lợi nhuận gấp 9 lần, lãi quý 4 sẽ gây bất ngờ?</a></h3>
+<p>💡 Một doanh nghiệp dầu khí nâng kế hoạch lợi nhuận sau thuế thêm hơn 16.400 tỷ đồng và vẫn vượt xa mục tiêu mới.</p>
+<p>🧠 Kế hoạch lợi nhuận là công cụ quản trị kỳ vọng; khoảng cách giữa kế hoạch và thực hiện nói nhiều về văn hoá đặt mục tiêu của ban lãnh đạo hơn là về năng lực kinh doanh.</p>
+<p class="q">❓ Đội của bạn đặt mục tiêu để chắc chắn đạt hay để thực sự thúc đẩy tăng trưởng?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261107_12">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261107_12">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#13 · Wharton Knowledge</div>
+<h3><a href="https://knowledge.wharton.upenn.edu/podcast/marketing-matters/building-a-modern-western-lifestyle-brand/" target="_blank" rel="noopener">Building a Modern Western Lifestyle Brand</a></h3>
+<p>💡 Tecovas xây thương hiệu lifestyle bằng kể chuyện, trải nghiệm cửa hàng và hợp tác chọn lọc thay vì chạy quảng cáo đại trà.</p>
+<p>🧠 Khi chi phí quảng cáo số tăng, thương hiệu và trải nghiệm trực tiếp trở thành kênh thu hút khách rẻ hơn về dài hạn — đó là tài sản tích luỹ chứ không phải chi phí hàng tháng.</p>
+<p class="q">❓ Ngân hàng số của bạn có &#x27;câu chuyện&#x27; nào khiến khách kể lại cho người khác, hay chỉ có bảng lãi suất?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261107_13">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261107_13">💬 Hỏi thêm</a>
+</div></article>
+</section>
+<section id="opportunities"><h2>🚀 Money &amp; opportunities</h2>
+<article class="card">
+<div class="meta">#14 · The Verge</div>
+<h3><a href="https://www.theverge.com/ai-artificial-intelligence/1029380/openai-1-25-trillion-investment-valuation" target="_blank" rel="noopener">OpenAI valued at $1.25 trillion, as rival Anthropic nears its IPO</a></h3>
+<p>💡 OpenAI được định giá 1.250 tỷ USD sau vòng gọi vốn 11 tỷ USD, trong khi Anthropic tiến gần IPO.</p>
+<p>🧠 Định giá khổng lồ đi kèm nhu cầu vốn khổng lồ: khi một công ty phải liên tục gọi vốn để vận hành, nhà đầu tư cuối cùng sẽ hỏi về dòng tiền chứ không chỉ về tăng trưởng.</p>
+<p class="q">❓ Nếu chi phí mô hình AI tăng gấp đôi vì các nhà cung cấp cần hoàn vốn, tính năng AI nào trong sản phẩm của bạn vẫn đáng giữ?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261107_14">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261107_14">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#15 · SEA Startups</div>
+<h3><a href="http://fortune.com/2026/11/05/the-ai-boom-is-the-first-platform-shift-where-there-are-real-advantages-of-building-from-asia-says-antlers-founder-and-ceo-magnus-grimeland/" target="_blank" rel="noopener">Experts say the AI boom is the first shift with ‘real advantages’ of building from Asia</a></h3>
+<p>💡 Giới chuyên gia cho rằng làn sóng AI là dịch chuyển đầu tiên mà việc xây dựng từ châu Á có &#x27;lợi thế thật&#x27;.</p>
+<p>🧠 Lợi thế của người xây ở châu Á là chi phí kỹ sư, tốc độ triển khai và thị trường bản địa chưa bão hoà — nhưng chỉ phát huy khi sản phẩm giải bài toán địa phương mà Mỹ không ưu tiên.</p>
+<p class="q">❓ Bài toán nào ở Việt Nam mà một startup Mỹ sẽ không bao giờ ưu tiên giải, nhưng khách hàng ở đây sẵn sàng trả tiền?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261107_15">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261107_15">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#16 · SEA Startups</div>
+<h3><a href="https://biz.chosun.com/en/en-it/2026/11/06/ZICVZ7OFJRFJJIDLTZRPE2EUTU/" target="_blank" rel="noopener">Korea and ASEAN AI startups compete in Manila to tap Southeast Asia</a></h3>
+<p>💡 Startup AI Hàn Quốc và ASEAN cạnh tranh tại Manila để thâm nhập thị trường Đông Nam Á.</p>
+<p>🧠 Vốn và công nghệ Đông Bắc Á đang tìm kênh phân phối ở Đông Nam Á — đối tác địa phương có khách hàng và giấy phép thường là thứ họ thiếu nhất.</p>
+<p class="q">❓ Nếu một startup AI nước ngoài muốn vào Việt Nam, bạn có thể bán cho họ thứ gì mà họ không tự xây được?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261107_16">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261107_16">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#17 · CafeBiz Câu chuyện KD</div>
+<h3><a href="https://cafebiz.vn/tin-vui-hoc-sinh-sinh-vien-kho-khan-duoc-vay-den-8-trieu-dong-thang-176261106154139854.chn" target="_blank" rel="noopener">Tin vui: Học sinh, sinh viên khó khăn được vay đến 8 triệu đồng/tháng</a></h3>
+<p>💡 Hạn mức vay cho học sinh, sinh viên khó khăn tăng gấp đôi lên 8 triệu đồng/tháng.</p>
+<p>🧠 Chính sách tín dụng ưu đãi mở ra một tập khách hàng trẻ chưa có lịch sử tín dụng — ai phục vụ họ sớm sẽ sở hữu quan hệ ngân hàng đầu tiên, nền tảng cho thẻ và tài khoản lương sau này.</p>
+<p class="q">❓ Chi phí phục vụ một khách hàng sinh viên là bao nhiêu, và bao lâu thì họ hoà vốn với bạn?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261107_17">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261107_17">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#18 · SEA Startups</div>
+<h3><a href="https://theinvestor.vn/mik-group-starts-50-ha-high-rise-residential-project-in-northern-vietnam-city-d20393.html" target="_blank" rel="noopener">MIK Group starts 50-ha high-rise residential project in northern Vietnam city</a></h3>
+<p>💡 MIK Group khởi công dự án nhà cao tầng 50 ha tại một thành phố phía Bắc Việt Nam.</p>
+<p>🧠 Dòng vốn bất động sản quay lại đô thị vệ tinh thường kéo theo nhu cầu vay mua nhà, bảo hiểm và thanh toán — ngân hàng nào bám theo quy hoạch hạ tầng sẽ có tệp khách tự nhiên.</p>
+<p class="q">❓ Bạn có bản đồ các dự án hạ tầng và dân cư 24 tháng tới để quyết định nơi đẩy sản phẩm vay mua nhà không?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261107_18">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261107_18">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#19 · The Verge</div>
+<h3><a href="https://www.theverge.com/science/1029162/spacex-starlink-mobile-elon-musk-news" target="_blank" rel="noopener">Starlink Mobile: All the news on SpaceX&amp;#8217;s major mobile carrier ambitions</a></h3>
+<p>💡 SpaceX tuyên bố biến Starlink Mobile thành nhà mạng lớn bằng hạ tầng vệ tinh sẵn có.</p>
+<p>🧠 Khi đã có hạ tầng trả trước, việc thêm một ngành kinh doanh mới gần như chỉ là chi phí biên — đó là logic kinh điển của việc mở rộng sang ngành kề cận.</p>
+<p class="q">❓ Hạ tầng nào bạn đã trả tiền rồi mà có thể tạo thêm một dòng doanh thu thứ hai?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261107_19">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261107_19">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#20 · TechCrunch Startups</div>
+<h3><a href="https://techcrunch.com/2026/11/05/axiom-math-wants-to-keep-ai-slop-out-of-mathematics/" target="_blank" rel="noopener">Axiom Math wants to keep AI slop out of mathematics</a></h3>
+<p>💡 Axiom Math dùng AI agent xác minh hình thức để chặn &#x27;rác AI&#x27; trong toán học, đã kiểm chứng Stacks Project.</p>
+<p>🧠 Mỗi làn sóng tạo sinh nội dung ồ ạt đều sinh ra thị trường cho lớp xác minh — bán &#x27;sự tin cậy&#x27; thường bền hơn bán &#x27;sự tạo ra&#x27;.</p>
+<p class="q">❓ Trong quy trình nào của ngân hàng bạn, việc AI tạo ra nhanh lại cần một lớp kiểm chứng mà bạn chưa xây?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261107_20">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261107_20">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#21 · TechCrunch Startups</div>
+<h3><a href="https://techcrunch.com/2026/11/05/a-yc-startup-is-putting-1m-behind-five-unsolved-materials-science-problems-for-ai/" target="_blank" rel="noopener">A YC startup is putting $1M behind 5 unsolved materials science problems for AI</a></h3>
+<p>💡 Một startup YC đặt 1 triệu USD cho 5 bài toán khoa học vật liệu chưa có lời giải dành cho AI.</p>
+<p>🧠 Treo thưởng cho bài toán cụ thể là cách rẻ để mua R&amp;D và đồng thời là chiêu marketing thu hút nhân tài — không cần tuyển cả một phòng nghiên cứu.</p>
+<p class="q">❓ Bài toán nào trong công ty bạn đáng treo thưởng công khai thay vì giao cho một đội nội bộ?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261107_21">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261107_21">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#22 · Product Hunt</div>
+<h3><a href="https://www.producthunt.com/products/cloptima" target="_blank" rel="noopener">Cloptima</a></h3>
+<p>💡 Cloptima ra mắt AI Gateway kèm guardrails và quản trị chi phí LLM (FinOps).</p>
+<p>🧠 Khi doanh nghiệp dùng nhiều mô hình AI, chi phí token trở thành khoản chi lớn cần kiểm soát — công cụ quản trị chi phí là mảng kinh doanh mọc lên ngay sau mỗi làn sóng hạ tầng mới.</p>
+<p class="q">❓ Bạn có biết chi phí AI trên mỗi giao dịch hoặc mỗi khách hàng của sản phẩm mình không?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261107_22">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261107_22">💬 Hỏi thêm</a>
+</div></article>
+</section>
+<section id="work"><h2>🏦 Your work</h2>
+<article class="card">
+<div class="meta">#23 · SVPG</div>
+<h3><a href="https://www.svpg.com/ai-and-the-future-of-the-product-role/" target="_blank" rel="noopener">AI and the Future of the Product Role</a></h3>
+<p>💡 SVPG lập luận rằng định nghĩa công việc của product manager đang bị AI viết lại.</p>
+<p>🧠 Giá trị của PM dịch chuyển từ viết tài liệu và điều phối sang phán đoán về rủi ro giá trị, khả thi và kinh doanh — phần AI khó thay thế nhất là chịu trách nhiệm cho quyết định.</p>
+<p class="q">❓ Bao nhiêu phần trăm thời gian tuần qua của bạn là việc AI có thể làm, và bạn sẽ dùng thời gian đó làm gì?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261107_23">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261107_23">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#24 · Finextra</div>
+<h3><a href="https://www.finextra.com/pressarticle/111609/bmo-launches-ai-agent-to-help-credit-card-customers-get-answers?utm_medium=rssfinextra&amp;utm_source=finextrafeed" target="_blank" rel="noopener">BMO launches AI agent to help credit card customers get answers</a></h3>
+<p>💡 BMO triển khai AI Agent Assist để trả lời khách hàng thẻ tín dụng nhanh hơn tại tổng đài ảo.</p>
+<p>🧠 Nơi AI tạo ROI rõ nhất trong ngân hàng là chi phí phục vụ: giảm thời gian xử lý và tăng tỷ lệ giải quyết ngay lần đầu cho khách thẻ, nơi khối lượng cuộc gọi lớn và câu hỏi lặp lại.</p>
+<p class="q">❓ Năm loại yêu cầu chiếm nhiều cuộc gọi nhất của khách thẻ ở ngân hàng bạn là gì, và AI xử lý được bao nhiêu trong số đó?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261107_24">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261107_24">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#25 · Finextra</div>
+<h3><a href="https://www.finextra.com/event-info/641/how-smes-can-simplify-cross-border-money-movement-while-reducing-costs-and-complexity?utm_medium=rssfinextra&amp;utm_source=finextrafeed" target="_blank" rel="noopener">How SMEs can simplify cross-border money movement while reducing costs and complexity</a></h3>
+<p>💡 Bài phân tích về cách SME đơn giản hoá chuyển tiền xuyên biên giới với giá minh bạch và kết quả chắc chắn.</p>
+<p>🧠 Với SME, &#x27;chắc chắn tiền đến đúng hạn, đúng số&#x27; có giá trị hơn vài điểm phần trăm phí rẻ hơn — niềm tin là yếu tố định giá, không chỉ là chất lượng dịch vụ.</p>
+<p class="q">❓ Nếu bạn làm sản phẩm chuyển tiền quốc tế cho SME Việt Nam, bạn sẽ cam kết điều gì mà đối thủ không dám cam kết?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261107_25">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261107_25">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#26 · Reuters</div>
+<h3><a href="https://www.reuters.com/world/asia-pacific/north-koreas-army-world-class-hackers-is-secret-weapon-that-took-down-binance-2026-11-06/" target="_blank" rel="noopener">North Korea&#x27;s army of world-class hackers is secret weapon that took down Binance</a></h3>
+<p>💡 Reuters mô tả đội hacker Triều Tiên là vũ khí bí mật đứng sau vụ tấn công Binance.</p>
+<p>🧠 Rủi ro an ninh mạng của tổ chức tài chính giờ ở cấp độ quốc gia; chi phí phòng thủ phải được tính vào unit economics của mọi sản phẩm giữ tiền của khách.</p>
+<p class="q">❓ Nếu hệ thống của bạn bị xâm nhập ngày mai, quy trình nào giới hạn thiệt hại trong 60 phút đầu tiên?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261107_26">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261107_26">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#27 · Finextra</div>
+<h3><a href="https://www.finextra.com/pressarticle/111607/ncr-atleos-launches-atm-for-retailers?utm_medium=rssfinextra&amp;utm_source=finextrafeed" target="_blank" rel="noopener">NCR Atleos launches ATM for retailers</a></h3>
+<p>💡 NCR Atleos ra mắt dòng ATM dành cho nhà bán lẻ, mở rộng điểm tiếp cận tiền mặt ngoài chi nhánh.</p>
+<p>🧠 Phân phối qua mạng lưới bán lẻ sẵn có rẻ hơn xây chi nhánh — ngân hàng số có thể mua độ phủ vật lý thay vì tự xây.</p>
+<p class="q">❓ Đối tác bán lẻ nào ở Việt Nam có thể trở thành &#x27;chi nhánh&#x27; chi phí thấp cho sản phẩm của bạn?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261107_27">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261107_27">💬 Hỏi thêm</a>
+</div></article>
+</section>
+<section id="insights"><h2>🧭 Insight mang vào công việc</h2>
+<table class="insights"><tr><th>Xu hướng</th><th>Hàm ý chiến lược</th></tr>
+<tr><td>Chi phí vốn toàn cầu đang tăng (BOE tăng lãi suất, lợi suất nợ AI vọt lên 16%) trong khi trong nước ngân hàng phải nâng lãi suất huy động để giữ thanh khoản.</td><td>Tôi cho rằng NIM năm sau sẽ bị bóp từ phía chi phí vốn, nên đáng kiểm chứng giả thuyết: tăng tỷ trọng CASA qua sản phẩm thanh toán/thẻ sẽ rẻ hơn nhiều so với mua tiền gửi có kỳ hạn bằng lãi suất ưu đãi.</td></tr>
+<tr><td>Nợ xấu ngân hàng Việt phân hóa, cùng lúc hạn mức vay sinh viên được nâng gấp đôi và tín dụng tiêu dùng mở rộng.</td><td>Có thể đây là thời điểm hợp lý để siết lại mô hình chấm điểm rủi ro theo dòng tiền giao dịch thay vì tài sản bảo đảm, và thử nghiệm sản phẩm nhỏ, kỳ hạn ngắn trước khi mở quy mô.</td></tr>
+<tr><td>AI đi vào tầng vận hành tài chính: BMO dùng AI agent cho khách thẻ tín dụng, vai trò product manager đang bị định nghĩa lại.</td><td>Giả thuyết đáng thử: đo tác động của AI agent lên chi phí mỗi cuộc gọi chăm sóc khách thẻ và tỷ lệ giải quyết ngay lần đầu, thay vì triển khai chatbot như một dự án hình ảnh.</td></tr>
+<tr><td>USD hạ nhiệt, P/E VN-Index về mức thấp, khối ngoại bán ròng một số cổ phiếu ngân hàng rồi quay lại mua.</td><td>Tôi nghiêng về cách đọc rằng rủi ro tỷ giá tạm giảm áp lực lên chi phí vốn ngoại tệ — đáng xem lại chiến lược huy động USD và định giá sản phẩm chuyển tiền quốc tế trong 2 quý tới.</td></tr>
+<tr><td>Rủi ro tội phạm mạng và lừa đảo xuyên biên giới leo thang (hacker Triều Tiên, trừng phạt ổ lừa đảo tại Campuchia).</td><td>Nên coi chi phí chống gian lận là một dòng trong unit economics của sản phẩm thanh toán, không phải chi phí tuân thủ tách rời; thử mô hình hóa tổn thất kỳ vọng trên mỗi giao dịch.</td></tr>
+</table></section>
+<section id="closing"><h2>🔭 Kết luận</h2><div class="closing">
+<b>Ba điều cần theo dõi</b><ul><li>Lãi suất huy động và động thái điều hành tỷ giá của Ngân hàng Nhà nước trong các tuần tới.</li><li>Lợi suất trái phiếu của các công ty hạ tầng AI (CoreWeave) và tiến độ IPO Anthropic — thước đo cơn sốt AI còn tiền hay hết tiền.</li><li>Kết quả nợ xấu quý 4 của các ngân hàng Việt Nam và mức trích lập dự phòng.</li></ul>
+<p class="q">❓ Nếu chi phí vốn tăng thêm 100 điểm cơ bản trong 12 tháng tới, sản phẩm nào của bạn vẫn còn lãi sau khi trừ chi phí huy động, rủi ro tín dụng và gian lận — và bạn sẽ ngừng làm gì trước tiên?</p>
+</div></section>
+<footer>Chọn bởi Claude · Trang này được thay mới mỗi sáng — bấm 💾 Lưu để giữ lại tin.</footer>
+</div></body></html>

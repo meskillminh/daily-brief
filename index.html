@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Daily Brief — Friday, 13/11/2026</title>
+<style>
+:root {
+  --bg: #f6f5f1; --card: #ffffff; --text: #1d1d1f; --muted: #6b6b70; --line: #e4e2dc;
+  --accent: #0b6e4f; --accent-soft: #e3f1ec; --concept: #fff6e0; --concept-line: #f0d9a0;
+  --up: #0f7a45; --up-soft: #dff2e7; --down: #b3261e; --down-soft: #f9e1df;
+  --warn: #9a6200; --warn-soft: #fbefd6; --flat: #2d5fa8; --flat-soft: #e2ebf8;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121214; --card: #1c1c1f; --text: #ececef; --muted: #9a9aa2; --line: #2c2c31;
+    --accent: #4cc39a; --accent-soft: #173229; --concept: #2a2415; --concept-line: #5a4a24;
+    --up: #4fc98a; --up-soft: #16301f; --down: #f2867d; --down-soft: #3a1b19;
+    --warn: #e8b45a; --warn-soft: #33270f; --flat: #8fb3ec; --flat-soft: #1a2638;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+.wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 64px; }
+header h1 { font-size: 1.6rem; margin: 0 0 4px; letter-spacing: -0.01em; }
+.date { color: var(--muted); margin: 0 0 16px; }
+.overview { font-size: 1.05rem; margin: 0 0 20px; }
+nav {
+  position: sticky; top: 0; z-index: 1; background: var(--bg);
+  display: flex; gap: 8px; overflow-x: auto; padding: 10px 0; margin-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+nav a {
+  flex: none; text-decoration: none; color: var(--text); background: var(--card);
+  border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: .9rem;
+}
+.concept {
+  background: var(--concept); border: 1px solid var(--concept-line); border-radius: 14px;
+  padding: 16px 18px; margin: 16px 0 8px;
+}
+.concept .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.concept h2 { margin: 4px 0 8px; font-size: 1.2rem; }
+.concept p { margin: 0 0 8px; }
+.concept .eg { font-size: .9rem; color: var(--muted); margin: 0; }
+.concept .eg a { color: var(--accent); }
+section h2 { font-size: 1.25rem; margin: 32px 0 12px; scroll-margin-top: 64px; }
+.card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+  padding: 14px 16px; margin: 0 0 12px;
+}
+.meta { font-size: .8rem; color: var(--muted); margin-bottom: 4px; }
+.card h3 { font-size: 1.05rem; margin: 0 0 8px; line-height: 1.4; }
+.card h3 a { color: var(--text); text-decoration: none; }
+.card h3 a:hover { text-decoration: underline; }
+.card p { margin: 0 0 6px; font-size: .95rem; }
+.card .q { color: var(--muted); font-style: italic; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.actions a {
+  text-decoration: none; font-size: .88rem; padding: 6px 12px; border-radius: 8px;
+  background: var(--accent-soft); color: var(--accent); font-weight: 600;
+}
+.money { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; margin: 16px 0 8px; }
+.money .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.money h2 { margin: 4px 0 6px; font-size: 1.2rem; scroll-margin-top: 64px; }
+.money h3 { font-size: .95rem; margin: 18px 0 8px; }
+.money p { margin: 0 0 8px; font-size: .95rem; }
+.pills { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 4px; }
+.pill { font-size: .78rem; padding: 3px 10px; border-radius: 999px; background: var(--flat-soft); color: var(--flat); }
+.pill.warn { background: var(--warn-soft); color: var(--warn); }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; margin-top: 12px; }
+.kpi { border: 1px solid var(--line); border-top: 3px solid var(--flat); border-radius: 10px; padding: 8px 10px; }
+.kpi.up { border-top-color: var(--up); } .kpi.down { border-top-color: var(--down); }
+.kpi .k { font-size: .75rem; color: var(--muted); }
+.kpi .v { font-weight: 700; font-variant-numeric: tabular-nums; }
+.kpi .c { font-size: .8rem; font-variant-numeric: tabular-nums; }
+.up-t { color: var(--up); } .down-t { color: var(--down); } .flat-t { color: var(--muted); }
+.bars { font-size: .85rem; font-variant-numeric: tabular-nums; }
+.bars .g { font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 10px 0 4px; }
+.bar { display: grid; grid-template-columns: minmax(84px, 30%) 1fr 64px; align-items: center; gap: 8px; padding: 3px 0; }
+.bar .n { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bar .track { position: relative; height: 12px; border-left: 0; }
+.bar .track::before { content: ""; position: absolute; left: 50%; top: -3px; bottom: -3px; border-left: 1px solid var(--line); }
+.bar .fill { position: absolute; top: 0; height: 100%; border-radius: 3px; }
+.bar .fill.up { left: 50%; background: var(--up); } .bar .fill.down { right: 50%; background: var(--down); }
+.bar .pct { text-align: right; }
+.bar.approx { opacity: .6; }
+.flows { width: 100%; border-collapse: collapse; font-size: .88rem; }
+.flows td { padding: 6px 4px; border-top: 1px solid var(--line); vertical-align: top; }
+.flows td:first-child { white-space: nowrap; font-weight: 600; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.box { border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; font-size: .88rem; }
+.box ul { margin: 4px 0 0; padding-left: 18px; }
+.money ol { margin: 0; padding-left: 20px; font-size: .92rem; }
+.small { font-size: .8rem; color: var(--muted); }
+.small a { color: var(--muted); }
+.insights { width: 100%; border-collapse: collapse; font-size: .92rem; background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.insights th, .insights td { text-align: left; padding: 10px 12px; border-top: 1px solid var(--line); vertical-align: top; }
+.insights th { border-top: 0; font-size: .8rem; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+.closing { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
+.closing ul { margin: 0 0 10px; padding-left: 20px; }
+@media (max-width: 480px) { .cols { grid-template-columns: 1fr; } }
+footer { color: var(--muted); font-size: .85rem; margin-top: 40px; text-align: center; }
+</style></head><body><div class="wrap">
+<header><h1>🗞 Daily Brief</h1>
+<p class="date">Friday, 13/11/2026 · 27 tin chọn lọc từ 116 tiêu đề</p>
+<p class="overview">Dòng tin hôm nay cho thấy hai lực kéo ngược chiều: Việt Nam cần huy động 6–6,4 triệu tỷ đồng vốn đầu tư cho 2027 và hút vốn ngoại sau nâng hạng, trong khi thị trường tài chính trong nước đang căng vì dư nợ margin kỷ lục 457.500 tỷ đồng. Ở tầng công nghệ, cú sụp của Jensen Huang và siết chip với Trung Quốc nhắc rằng rủi ro quản trị và địa chính trị giờ định giá cổ phiếu ngang với tăng trưởng, còn hạ tầng thanh toán – từ Fiserv bán mạng debit tới Visa payouts – đang được sắp xếp lại quanh biên lợi nhuận thật.</p>
+</header>
+<nav>
+<a href="#concept">💡 Concept</a>
+<a href="#must_know">🌍 Must know</a>
+<a href="#business">🧠 How business works</a>
+<a href="#opportunities">🚀 Money &amp; opportunities</a>
+<a href="#work">🏦 Your work</a>
+<a href="#insights">🧭 Insight</a>
+</nav>
+<div class="concept" id="concept">
+<div class="label">Concept of the day</div>
+<h2>Credit cost / Cost of risk (chi phí rủi ro tín dụng)</h2>
+<p>Chi phí rủi ro tín dụng là khoản tiền mà một tổ chức cho vay phải trích ra để bù cho phần dư nợ nhiều khả năng không đòi được. Khi công ty chứng khoán cho vay margin 457.500 tỷ đồng, phần lãi thu được là doanh thu, nhưng nếu giá cổ phiếu rơi và khách hàng không bổ sung tài sản bảo đảm, phần thua lỗ đó ăn thẳng vào lợi nhuận. Trong P&amp;L của ngân hàng hay công ty tài chính, công thức rút gọn là: thu nhập lãi thuần (NIM) trừ chi phí vận hành trừ chi phí rủi ro tín dụng = lợi nhuận thật. Một sản phẩm cho vay &#x27;lãi cao&#x27; có thể vẫn lỗ nếu tỷ lệ nợ xấu tăng vài điểm phần trăm. Vì vậy người làm sản phẩm cho vay phải nhìn lãi suất và chất lượng tài sản bảo đảm như một cặp, không bao giờ tách rời.</p>
+<p class="eg">Ví dụ hôm nay: <a href="https://vnexpress.net/sgi-capital-chung-khoan-van-con-nguy-co-vo-no-margin-5144031.html" target="_blank" rel="noopener">SGI Capital: Chứng khoán vẫn còn nguy cơ vỡ nợ margin</a></p>
+</div>
+<section id="must_know"><h2>🌍 Must know</h2>
+<article class="card">
+<div class="meta">#1 · VnExpress Tin Nổi Bật</div>
+<h3><a href="https://vnexpress.net/thu-tuong-nam-2027-can-huy-dong-toi-6-4-trieu-ty-dong-von-dau-tu-5143983.html" target="_blank" rel="noopener">Thủ tướng: Năm 2027 cần huy động tới 6,4 triệu tỷ đồng vốn đầu tư</a></h3>
+<p>💡 Thủ tướng đặt mục tiêu huy động 6–6,4 triệu tỷ đồng vốn đầu tư toàn xã hội năm 2027, tương đương 36–38% GDP.</p>
+<p>🧠 Khi nền kinh tế cần hút vốn ở quy mô này, tiền gửi và trái phiếu sẽ bị cạnh tranh gay gắt, kéo chi phí vốn của ngân hàng lên và ép NIM.</p>
+<p class="q">❓ Nếu chi phí huy động tăng 50bps trong năm tới, sản phẩm nào của ngân hàng bạn sẽ mất lãi đầu tiên?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261113_1">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261113_1">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#2 · VnExpress Kinh Doanh</div>
+<h3><a href="https://vnexpress.net/sgi-capital-chung-khoan-van-con-nguy-co-vo-no-margin-5144031.html" target="_blank" rel="noopener">SGI Capital: Chứng khoán vẫn còn nguy cơ vỡ nợ margin</a></h3>
+<p>💡 Dư nợ margin toàn thị trường lập kỷ lục 457.500 tỷ đồng, kèm cảnh báo vỡ nợ khi cổ đông vay rồi rút vốn ra ngoài.</p>
+<p>🧠 Đòn bẩy làm lợi nhuận đẹp lúc giá lên và xoá sạch vốn lúc giá xuống; bất kỳ mô hình cho vay có tài sản bảo đảm nào cũng phải định giá theo kịch bản thanh lý.</p>
+<p class="q">❓ Nếu bạn thiết kế sản phẩm cho vay thế chấp tài sản tài chính, ngưỡng call margin của bạn đặt ở đâu và vì sao?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261113_2">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261113_2">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#3 · CafeBiz Câu chuyện KD</div>
+<h3><a href="https://cafebiz.vn/nong-jensen-huang-tu-chuc-chu-tich-ceo-va-ca-thanh-vien-hoi-dong-quan-tri-nvidia-176261112211749692.chn" target="_blank" rel="noopener">Nóng: Jensen Huang từ chức Chủ tịch, CEO và cả thành viên Hội đồng quản trị Nvidia</a></h3>
+<p>💡 Jensen Huang từ chức CEO, Chủ tịch và rời HĐQT Nvidia sau 33 năm vì bê bối cá nhân.</p>
+<p>🧠 Rủi ro quản trị tập trung vào một cá nhân là rủi ro tài chính có thật: nhà đầu tư định giá cả &#x27;người sáng lập&#x27; chứ không chỉ sản phẩm.</p>
+<p class="q">❓ Công ty bạn sẽ ra sao nếu người lãnh đạo quan trọng nhất biến mất trong 24 giờ?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261113_3">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261113_3">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#4 · Reuters</div>
+<h3><a href="https://www.reuters.com/world/china/speaker-johnson-says-congress-developing-consensus-limiting-chip-exports-china-2026-11-12/" target="_blank" rel="noopener">China&#x27;s access to Nvidia chips in doubt as curbs gain traction in US Congress</a></h3>
+<p>💡 Quốc hội Mỹ đang siết khả năng Trung Quốc tiếp cận chip Nvidia, đẩy các công ty AI Trung Quốc đi thuê năng lực tính toán.</p>
+<p>🧠 Khi nguồn cung bị chính sách chặn, giá trị dịch chuyển sang ai kiểm soát quyền truy cập – tạo ra thị trường cho thuê, trung gian và chuyển dịch sản xuất sang nước thứ ba.</p>
+<p class="q">❓ Nếu dòng vốn FDI điện tử dịch chuyển mạnh hơn về Việt Nam, sản phẩm tài chính nào cho doanh nghiệp FDI nên làm trước?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261113_4">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261113_4">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#5 · CNBC Finance</div>
+<h3><a href="https://www.cnbc.com/2026/11/12/in-policy-switch-fed-says-its-october-2027-meeting-will-not-see-a-vote-on-interest-rates.html" target="_blank" rel="noopener">In a policy switch, the Fed says its October 2027 meeting will not see a vote on interest rates</a></h3>
+<p>💡 Fed đổi cơ chế: phiên họp tháng 10/2027 sẽ không bỏ phiếu lãi suất, chỉ còn bảy phiên có quyết định.</p>
+<p>🧠 Lịch chính sách tiền tệ là biến số lập kế hoạch: ít điểm quyết định hơn nghĩa là mỗi phiên tạo biến động lớn hơn cho tỷ giá và chi phí vốn ngoại tệ.</p>
+<p class="q">❓ Kế hoạch huy động vốn và quản trị tỷ giá của bạn có gắn với lịch họp Fed chưa?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261113_5">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261113_5">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#6 · CafeF</div>
+<h3><a href="https://cafef.vn/chung-khoan-viet-nam-di-xuong-sau-nang-hang-chu-tich-vsdc-chi-ra-dieu-con-thieu-de-hut-dong-von-ngoai-188261112164924677.chn" target="_blank" rel="noopener">Chứng khoán Việt Nam đi xuống sau nâng hạng, Chủ tịch VSDC chỉ ra điều còn thiếu để hút dòng vốn ngoại</a></h3>
+<p>💡 Chủ tịch VSDC chỉ ra thị trường thiếu nguồn cung cổ phiếu chất lượng cao để giữ vốn ngoại sau nâng hạng.</p>
+<p>🧠 Nâng hạng chỉ mở cửa; dòng vốn chỉ ở lại khi có hàng hoá đủ lớn và minh bạch để mua – nguồn cung mới là nút thắt, không phải nhu cầu.</p>
+<p class="q">❓ Nếu ngân hàng bạn muốn IPO hay phát hành thêm trong 3 năm tới, điều gì khiến quỹ ngoại chọn bạn thay vì đối thủ?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261113_6">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261113_6">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#7 · VnExpress Kinh Doanh</div>
+<h3><a href="https://vnexpress.net/loat-ong-lon-xay-dung-trung-quoc-muon-tang-dau-tu-tai-viet-nam-5144057.html" target="_blank" rel="noopener">Loạt &#x27;ông lớn&#x27; xây dựng Trung Quốc muốn tăng đầu tư tại Việt Nam</a></h3>
+<p>💡 Nhiều tập đoàn xây dựng lớn Trung Quốc muốn tăng đầu tư vào đường sắt đô thị, năng lượng và khu công nghiệp tại Việt Nam.</p>
+<p>🧠 Hạ tầng kéo theo nhu cầu tài chính dự án, bảo lãnh và thanh toán xuyên biên – mảng doanh thu phí ít phụ thuộc lãi suất.</p>
+<p class="q">❓ Ngân hàng số của bạn có thể phục vụ nhà thầu và chuỗi nhà cung cấp hạ tầng ở khâu nào?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261113_7">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261113_7">💬 Hỏi thêm</a>
+</div></article>
+</section>
+<section id="business"><h2>🧠 How business works</h2>
+<article class="card">
+<div class="meta">#8 · Finextra</div>
+<h3><a href="https://www.finextra.com/newsarticle/48750/fiserv-lays-groundwork-to-offload-a-debit-network?utm_medium=rssfinextra&amp;utm_source=finextrafeed" target="_blank" rel="noopener">Fiserv lays groundwork to offload a debit network</a></h3>
+<p>💡 Fiserv dồn khách hàng về một mạng debit để dọn đường bán mạng còn lại.</p>
+<p>🧠 Sở hữu hai hạ tầng trùng lặp không tạo lợi thế; giá trị nằm ở quy mô giao dịch trên một rail duy nhất, nên hợp nhất trước rồi bán phần dư là cách bóc giá trị.</p>
+<p class="q">❓ Trong hệ thống thẻ của bạn, phần nào là hạ tầng trùng lặp đang ngốn chi phí mà không tạo khác biệt?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261113_8">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261113_8">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#9 · Money Stuff</div>
+<h3><a href="https://www.bloomberg.com/opinion/newsletters/2026-11-10/anthropic-has-some-anchor-investors" target="_blank" rel="noopener">Anthropic Has Some Anchor Investors</a></h3>
+<p>💡 Money Stuff mổ xẻ cấu trúc nhà đầu tư neo (anchor investor) trong thương vụ IPO của Anthropic.</p>
+<p>🧠 Giá IPO không do thị trường tự định mà do sổ lệnh được dựng quanh vài nhà đầu tư lớn cam kết trước – hiểu điều này là hiểu cách deal thật sự vận hành.</p>
+<p class="q">❓ Nếu bạn gọi vốn vòng đầu, ai là &#x27;anchor&#x27; khiến các nhà đầu tư khác tin tưởng đi theo?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261113_9">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261113_9">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#10 · VnExpress Kinh Doanh</div>
+<h3><a href="https://vnexpress.net/cong-ty-ong-tran-ba-duong-chot-don-xuat-khau-chuoi-gan-nua-ty-usd-5144068.html" target="_blank" rel="noopener">Công ty ông Trần Bá Dương chốt đơn xuất khẩu chuối gần nửa tỷ USD</a></h3>
+<p>💡 Thaco Agri chốt đơn xuất khẩu hơn 680.000 tấn chuối năm 2027, giá trị khoảng 498 triệu USD.</p>
+<p>🧠 Hợp đồng bao tiêu dài hạn biến nông nghiệp rủi ro thành dòng tiền dự báo được – nền tảng để vay vốn và đầu tư cơ giới hoá.</p>
+<p class="q">❓ Sản phẩm nào của bạn có thể chuyển từ doanh thu theo lần sang hợp đồng cam kết dài hạn?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261113_10">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261113_10">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#11 · Finextra</div>
+<h3><a href="https://www.finextra.com/newsarticle/48749/fnz-to-close-offices-and-reduce-headcount?utm_medium=rssfinextra&amp;utm_source=finextrafeed" target="_blank" rel="noopener">FNZ to close offices and reduce headcount</a></h3>
+<p>💡 FNZ đóng văn phòng, cắt nhân sự và tăng giá để &#x27;xây doanh nghiệp bền vững&#x27;.</p>
+<p>🧠 Khi tăng trưởng không còn được tài trợ bằng vốn rẻ, đòn bẩy lợi nhuận chỉ còn hai cần gạt: giá bán và chi phí vận hành – và tăng giá thường hiệu quả hơn cắt giảm.</p>
+<p class="q">❓ Bạn có dám tăng giá 10% cho nhóm khách hàng nào mà không mất họ?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261113_11">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261113_11">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#12 · Stratechery</div>
+<h3><a href="https://stratechery.com/2026/an-interview-with-roblox-ceo-david-baszucki-about-aggregating-play/" target="_blank" rel="noopener">An Interview With Roblox CEO David Baszucki About Aggregating Play</a></h3>
+<p>💡 CEO Roblox nói về việc AI thay đổi cách tạo game và mở cơ hội cho nhà phát triển trên nền tảng.</p>
+<p>🧠 Nền tảng thắng khi hạ chi phí sản xuất cho người khác rồi thu phần trăm trên giá trị tạo ra – đó là logic take rate, không phải logic bán sản phẩm.</p>
+<p class="q">❓ Nếu ngân hàng bạn là nền tảng, ai là &#x27;nhà phát triển&#x27; và bạn giúp họ tạo ra cái gì?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261113_12">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261113_12">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#13 · Not Boring</div>
+<h3><a href="https://www.notboring.co/p/of-miracles-and-moats" target="_blank" rel="noopener">Of Miracles and Moats</a></h3>
+<p>💡 Bài phân tích về chu kỳ, bong bóng và thặng dư tiêu dùng trong thời kỳ công nghệ bùng nổ.</p>
+<p>🧠 Bong bóng vẫn có thể tạo ra hạ tầng hữu ích cho xã hội trong khi xoá sạch vốn của nhà đầu tư – phân biệt giữa &#x27;giá trị tạo ra&#x27; và &#x27;giá trị giữ được&#x27; là cốt lõi của moat.</p>
+<p class="q">❓ Trong làn sóng AI, phần giá trị nào bạn có thể giữ lại thay vì chuyển hết cho khách hàng?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261113_13">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261113_13">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#14 · CafeBiz Câu chuyện KD</div>
+<h3><a href="https://cafebiz.vn/gia-heo-sut-giam-loat-ong-lon-chan-nuoi-bao-loi-nhuan-di-lui-176261112202813122.chn" target="_blank" rel="noopener">Giá heo sụt giảm, loạt &quot;ông lớn&quot; chăn nuôi báo lợi nhuận &quot;đi lùi&quot;</a></h3>
+<p>💡 Giá heo hơi trượt dốc kéo lợi nhuận quý 3/2026 của loạt doanh nghiệp chăn nuôi đi lùi.</p>
+<p>🧠 Ngành hàng hoá không có quyền định giá: lợi nhuận phụ thuộc chênh lệch giá bán – giá đầu vào, nên lợi thế duy nhất là chi phí thấp nhất ngành.</p>
+<p class="q">❓ Danh mục cho vay doanh nghiệp của bạn có bao nhiêu phần gắn với một mặt hàng có giá biến động mạnh?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261113_14">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261113_14">💬 Hỏi thêm</a>
+</div></article>
+</section>
+<section id="opportunities"><h2>🚀 Money &amp; opportunities</h2>
+<article class="card">
+<div class="meta">#15 · SEA Startups</div>
+<h3><a href="https://app.dealroom.co/news/note/osk-sbi-leads-new-round-in-vietnam-s-used-car-startup-vucar" target="_blank" rel="noopener">OSK-SBI leads new round in Vietnam&#x27;s used-car startup Vucar</a></h3>
+<p>💡 OSK-SBI dẫn dắt vòng gọi vốn mới cho Vucar, startup xe cũ của Việt Nam.</p>
+<p>🧠 Thị trường xe cũ là bài toán niềm tin và tài chính hơn là bài toán sàn giao dịch – ai chuẩn hoá chất lượng và gắn được vay mua xe sẽ ăn phần biên lớn nhất.</p>
+<p class="q">❓ Nếu ngân hàng bạn hợp tác với một nền tảng xe cũ, bạn kiểm soát rủi ro định giá tài sản bảo đảm thế nào?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261113_15">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261113_15">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#16 · Finextra</div>
+<h3><a href="https://www.finextra.com/newsarticle/48753/mexicos-clara-raises-65m-for-spend-management-platform?utm_medium=rssfinextra&amp;utm_source=finextrafeed" target="_blank" rel="noopener">Mexico&#x27;s Clara raises $65m for spend management platform</a></h3>
+<p>💡 Clara huy động 65 triệu USD Series C cho nền tảng quản lý chi tiêu doanh nghiệp tại Mỹ Latinh.</p>
+<p>🧠 Thẻ doanh nghiệp + phần mềm kiểm soát chi tiêu là mô hình kiếm tiền hai lớp: interchange trên mỗi giao dịch cộng phí phần mềm, với chi phí thu hút khách thấp hơn bán lẻ.</p>
+<p class="q">❓ Phân khúc SME ở Việt Nam đang thiếu công cụ kiểm soát chi tiêu nào mà ngân hàng bạn có thể cung cấp?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261113_16">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261113_16">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#17 · VnExpress KHCN</div>
+<h3><a href="https://vnexpress.net/microsoft-mo-van-phong-moi-o-tp-hcm-sau-dot-dieu-chinh-nhan-su-5143963.html" target="_blank" rel="noopener">Microsoft mở văn phòng mới ở TP HCM sau đợt điều chỉnh nhân sự</a></h3>
+<p>💡 Microsoft Việt Nam khai trương văn phòng mới tại TP HCM ngay sau đợt điều chỉnh nhân sự toàn cầu.</p>
+<p>🧠 Các tập đoàn cắt giảm ở nơi đắt đỏ nhưng vẫn mở rộng ở thị trường tăng trưởng – đó là tín hiệu về nơi chi phí và nhu cầu đang gặp nhau.</p>
+<p class="q">❓ Nguồn nhân lực công nghệ được các tập đoàn này đào tạo có thể trở thành lợi thế tuyển dụng của bạn ra sao?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261113_17">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261113_17">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#18 · VnEconomy Thế giới</div>
+<h3><a href="https://vneconomy.vn/tham-vong-tro-thanh-trung-tam-vang-toan-cau-cua-singapore.htm" target="_blank" rel="noopener">Tham vọng trở thành trung tâm vàng toàn cầu của Singapore</a></h3>
+<p>💡 Singapore đẩy mạnh tham vọng thành trung tâm vàng toàn cầu bằng dịch vụ lưu ký cho ngân hàng trung ương và ưu đãi thuế.</p>
+<p>🧠 Một trung tâm tài chính được xây bằng chính sách thuế và hạ tầng lưu ký, không phải bằng nhu cầu tự nhiên – thể chế là sản phẩm cạnh tranh.</p>
+<p class="q">❓ Nếu Việt Nam muốn giữ dòng tiết kiệm vàng trong hệ thống tài chính, sản phẩm số nào sẽ làm được điều đó?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261113_18">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261113_18">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#19 · TechCrunch Startups</div>
+<h3><a href="https://techcrunch.com/2026/11/12/nectar-launches-an-ai-agent-to-automate-creator-discovery-and-outreach-for-brands/" target="_blank" rel="noopener">Nectar launches an AI agent to automate creator discovery and outreach for brands</a></h3>
+<p>💡 Nectar ra mắt AI agent tự động tìm và tiếp cận creator cho các thương hiệu.</p>
+<p>🧠 Agent AI đang ăn vào các công việc trung gian lặp lại có phí môi giới cao – nơi nào có agency thu phần trăm, nơi đó có cơ hội thay thế bằng phần mềm.</p>
+<p class="q">❓ Quy trình nào trong ngân hàng bạn đang trả phí cho trung gian mà một agent có thể làm?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261113_19">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261113_19">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#20 · TechCrunch Startups</div>
+<h3><a href="https://techcrunch.com/2026/11/10/after-challenging-googles-android-with-cyanogen-its-co-founder-takes-aim-at-windows-for-ai-era/" target="_blank" rel="noopener">After challenging Google’s Android with Cyanogen, its co-founder takes aim at Windows for AI era</a></h3>
+<p>💡 Đồng sáng lập Cyanogen ra mắt Kora, hệ điều hành miễn phí thay thế Windows cho người dùng AI và agent.</p>
+<p>🧠 Khi giao diện chính của người dùng đổi (từ ứng dụng sang agent), tầng hệ điều hành mở ra cửa cho người mới – thay đổi hành vi tạo ra cửa sổ phân phối.</p>
+<p class="q">❓ Nếu khách hàng tương lai giao dịch ngân hàng qua agent thay vì mở app, sản phẩm của bạn phải viết lại ở đâu?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261113_20">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261113_20">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#21 · VnEconomy Thế giới</div>
+<h3><a href="https://vneconomy.vn/nang-luong-sach-trung-quoc-dong-luc-thuc-day-chuyen-dich-xanh-toan-cau.htm" target="_blank" rel="noopener">Năng lượng sạch Trung Quốc: Động lực thúc đẩy chuyển dịch xanh toàn cầu</a></h3>
+<p>💡 Sản phẩm năng lượng sạch giá rẻ của Trung Quốc đang hạ chi phí chuyển dịch xanh ở các nước đang phát triển.</p>
+<p>🧠 Giá thiết bị giảm biến dự án năng lượng từ &#x27;chính sách&#x27; thành &#x27;dòng tiền có thể vay&#x27; – đó là lúc sản phẩm tài chính xanh có thể bán được thật.</p>
+<p class="q">❓ Ngân hàng bạn đã có mô hình thẩm định dự án điện mặt trời áp mái cho SME chưa?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261113_21">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261113_21">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#22 · Noahpinion</div>
+<h3><a href="https://www.noahpinion.blog/p/india-is-quietly-doing-great" target="_blank" rel="noopener">India is quietly doing great</a></h3>
+<p>💡 Phân tích cho thấy kinh tế Ấn Độ tiếp tục tăng trưởng vững bất chấp hoài nghi.</p>
+<p>🧠 Thị trường tiêu dùng đông dân với thu nhập tăng dần là nơi các mô hình fintech chi phí thấp nhân rộng nhanh nhất – một kịch bản tham chiếu tốt cho Việt Nam.</p>
+<p class="q">❓ Bài học nào từ UPI của Ấn Độ nên áp dụng cho chiến lược thanh toán của bạn?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261113_22">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261113_22">💬 Hỏi thêm</a>
+</div></article>
+</section>
+<section id="work"><h2>🏦 Your work</h2>
+<article class="card">
+<div class="meta">#23 · The Verge</div>
+<h3><a href="https://www.theverge.com/ai-artificial-intelligence/1032505/google-search-ai-mode-gemini-4-hydrogen" target="_blank" rel="noopener">Google’s new Gemini model is better at understanding complicated questions</a></h3>
+<p>💡 Google ra mô hình Gemini 4 Hydrogen, mạnh hơn ở câu hỏi nhiều phần và mơ hồ.</p>
+<p>🧠 Năng lực hiểu câu hỏi phức tạp là điều kiện để chuyển chatbot từ FAQ sang xử lý nghiệp vụ thật như tra soát giao dịch hay tư vấn sản phẩm.</p>
+<p class="q">❓ Trường hợp hỗ trợ khách hàng nào ở ngân hàng bạn đang thất bại chỉ vì mô hình không hiểu câu hỏi nhiều ý?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261113_23">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261113_23">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#24 · Finextra</div>
+<h3><a href="https://www.finextra.com/pressarticle/111664/aviagames-partners-visa-for-player-payouts?utm_medium=rssfinextra&amp;utm_source=finextrafeed" target="_blank" rel="noopener">AviaGames partners Visa for player payouts</a></h3>
+<p>💡 AviaGames hợp tác Visa và Global Payments để chi trả cho người chơi.</p>
+<p>🧠 Luồng tiền ra (payout tức thời về thẻ) đang thành sản phẩm riêng với phí riêng, khác hẳn mảng thu hộ truyền thống – một nguồn doanh thu phí cho ngân hàng phát hành.</p>
+<p class="q">❓ Ngân hàng bạn có thể bán dịch vụ chi trả tức thời cho nhóm khách hàng doanh nghiệp nào trước?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261113_24">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261113_24">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#25 · Hacker News</div>
+<h3><a href="https://status.cloud.microsoft/" target="_blank" rel="noopener">Service degradation on Microsoft 365</a></h3>
+<p>💡 Microsoft 365 gián đoạn diện rộng khiến nhiều doanh nghiệp mất kết nối đám mây.</p>
+<p>🧠 Phụ thuộc một nhà cung cấp đám mây là rủi ro vận hành có thể quy ra tiền; cần định lượng chi phí downtime và có phương án dự phòng cho quy trình quan trọng.</p>
+<p class="q">❓ Nếu nhà cung cấp cốt lõi của bạn sập 4 giờ vào ngày lương, kịch bản ứng phó của bạn là gì?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261113_25">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261113_25">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#26 · Product Hunt</div>
+<h3><a href="https://www.producthunt.com/products/didit-3" target="_blank" rel="noopener">Didit MCP</a></h3>
+<p>💡 Didit ra mắt MCP server cho xác minh danh tính và kiểm tra gian lận.</p>
+<p>🧠 KYC và chống gian lận đang được đóng gói thành API/agent gọi được, giúp giảm chi phí mở tài khoản trên mỗi khách hàng – đòn bẩy trực tiếp lên unit economics.</p>
+<p class="q">❓ Chi phí eKYC trên mỗi khách hàng mở mới của bạn là bao nhiêu và giảm được bao nhiêu phần trăm?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261113_26">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261113_26">💬 Hỏi thêm</a>
+</div></article>
+<article class="card">
+<div class="meta">#27 · Finextra</div>
+<h3><a href="https://www.finextra.com/pressarticle/111663/wolters-kluwer-streamlines-lending-for-community-banks-and-credit-unions?utm_medium=rssfinextra&amp;utm_source=finextrafeed" target="_blank" rel="noopener">Wolters Kluwer streamlines lending for community banks and credit unions</a></h3>
+<p>💡 Wolters Kluwer ra nền tảng đám mây ComplianceOne Plus cho ngân hàng cộng đồng và quỹ tín dụng.</p>
+<p>🧠 Tuân thủ là chi phí cố định đè nặng tổ chức nhỏ; ai biến nó thành dịch vụ dùng chung sẽ bán được cho hàng nghìn khách hàng cùng một sản phẩm.</p>
+<p class="q">❓ Phần tuân thủ nào trong quy trình cho vay của bạn có thể chuẩn hoá và tự động hoá hoàn toàn?</p>
+<div class="actions">
+<a href="https://t.me/ponews19042026bot?start=save_20261113_27">💾 Lưu</a>
+<a href="https://t.me/ponews19042026bot?start=ask_20261113_27">💬 Hỏi thêm</a>
+</div></article>
+</section>
+<section id="insights"><h2>🧭 Insight mang vào công việc</h2>
+<table class="insights"><tr><th>Xu hướng</th><th>Hàm ý chiến lược</th></tr>
+<tr><td>Nhà nước đặt mục tiêu vốn đầu tư toàn xã hội 36–38% GDP trong khi margin chứng khoán lập kỷ lục và vốn ngoại chưa vào mạnh sau nâng hạng.</td><td>Tôi cho rằng chi phí vốn huy động trong nước sẽ chịu áp lực tăng; nên thử kịch bản NIM giảm 30–50bps và kiểm tra xem sản phẩm tiền gửi số của mình có giữ được chi phí vốn rẻ hơn kênh chi nhánh không.</td></tr>
+<tr><td>Fiserv dọn đường bán một mạng debit, Visa bắt tay AviaGames làm payouts – hạ tầng thẻ đang tách thành phần &#x27;rails rẻ&#x27; và phần &#x27;dịch vụ biên cao&#x27;.</td><td>Giả thuyết đáng kiểm chứng: giá trị cho ngân hàng số nằm ở luồng tiền ra (payout, hoàn tiền, chi hộ) hơn là tranh interchange trên luồng chi tiêu đã bị nén.</td></tr>
+<tr><td>Rủi ro quản trị cá nhân (Nvidia) và rủi ro vận hành bên thứ ba (sự cố Microsoft 365) cùng lúc gây thiệt hại thật cho doanh nghiệp.</td><td>Nên rà lại danh sách phụ thuộc nhà cung cấp cho các luồng nghiệp vụ quan trọng và định lượng chi phí một ngày downtime theo doanh thu phí, thay vì chỉ coi đó là việc của IT.</td></tr>
+<tr><td>Vốn đổ vào các mô hình &#x27;tài chính gắn giao dịch&#x27; – Vucar (xe cũ Việt Nam), Clara (quản lý chi tiêu doanh nghiệp) – chứ không vào ví thuần tuý.</td><td>Hướng đáng thử: nhúng tín dụng/thanh toán vào một giao dịch có sẵn (mua xe, chi tiêu doanh nghiệp) để có dữ liệu định giá rủi ro, thay vì mua khách hàng bằng khuyến mãi.</td></tr>
+</table></section>
+<section id="closing"><h2>🔭 Kết luận</h2><div class="closing">
+<b>Ba điều cần theo dõi</b><ul><li>Dư nợ margin và động thái của cơ quan quản lý nếu thị trường điều chỉnh mạnh.</li><li>Dự luật siết xuất khẩu chip Nvidia sang Trung Quốc tại Quốc hội Mỹ và tác động lên chuỗi cung ứng điện tử Việt Nam.</li><li>Người kế nhiệm chính thức tại Nvidia và phản ứng định giá của nhóm cổ phiếu AI.</li></ul>
+<p class="q">❓ Nếu chi phí vốn tăng và nợ xấu bán lẻ nhích lên trong 12 tháng tới, sản phẩm nào của bạn vẫn còn dương lợi nhuận sau chi phí rủi ro – và bạn sẽ cắt cái nào trước?</p>
+</div></section>
+<footer>Chọn bởi Claude · Trang này được thay mới mỗi sáng — bấm 💾 Lưu để giữ lại tin.</footer>
+</div></body></html>

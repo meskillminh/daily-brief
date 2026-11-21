@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Deep Dive — Saturday, 21/11/2026</title>
+<style>
+:root {
+  --bg: #f6f5f1; --card: #ffffff; --text: #1d1d1f; --muted: #6b6b70; --line: #e4e2dc;
+  --accent: #0b6e4f; --accent-soft: #e3f1ec; --concept: #fff6e0; --concept-line: #f0d9a0;
+  --up: #0f7a45; --up-soft: #dff2e7; --down: #b3261e; --down-soft: #f9e1df;
+  --warn: #9a6200; --warn-soft: #fbefd6; --flat: #2d5fa8; --flat-soft: #e2ebf8;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121214; --card: #1c1c1f; --text: #ececef; --muted: #9a9aa2; --line: #2c2c31;
+    --accent: #4cc39a; --accent-soft: #173229; --concept: #2a2415; --concept-line: #5a4a24;
+    --up: #4fc98a; --up-soft: #16301f; --down: #f2867d; --down-soft: #3a1b19;
+    --warn: #e8b45a; --warn-soft: #33270f; --flat: #8fb3ec; --flat-soft: #1a2638;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+.wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 64px; }
+header h1 { font-size: 1.6rem; margin: 0 0 4px; letter-spacing: -0.01em; }
+.date { color: var(--muted); margin: 0 0 16px; }
+.overview { font-size: 1.05rem; margin: 0 0 20px; }
+nav {
+  position: sticky; top: 0; z-index: 1; background: var(--bg);
+  display: flex; gap: 8px; overflow-x: auto; padding: 10px 0; margin-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+nav a {
+  flex: none; text-decoration: none; color: var(--text); background: var(--card);
+  border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: .9rem;
+}
+.concept {
+  background: var(--concept); border: 1px solid var(--concept-line); border-radius: 14px;
+  padding: 16px 18px; margin: 16px 0 8px;
+}
+.concept .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.concept h2 { margin: 4px 0 8px; font-size: 1.2rem; }
+.concept p { margin: 0 0 8px; }
+.concept .eg { font-size: .9rem; color: var(--muted); margin: 0; }
+.concept .eg a { color: var(--accent); }
+section h2 { font-size: 1.25rem; margin: 32px 0 12px; scroll-margin-top: 64px; }
+.card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+  padding: 14px 16px; margin: 0 0 12px;
+}
+.meta { font-size: .8rem; color: var(--muted); margin-bottom: 4px; }
+.card h3 { font-size: 1.05rem; margin: 0 0 8px; line-height: 1.4; }
+.card h3 a { color: var(--text); text-decoration: none; }
+.card h3 a:hover { text-decoration: underline; }
+.card p { margin: 0 0 6px; font-size: .95rem; }
+.card .q { color: var(--muted); font-style: italic; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.actions a {
+  text-decoration: none; font-size: .88rem; padding: 6px 12px; border-radius: 8px;
+  background: var(--accent-soft); color: var(--accent); font-weight: 600;
+}
+.money { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; margin: 16px 0 8px; }
+.money .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.money h2 { margin: 4px 0 6px; font-size: 1.2rem; scroll-margin-top: 64px; }
+.money h3 { font-size: .95rem; margin: 18px 0 8px; }
+.money p { margin: 0 0 8px; font-size: .95rem; }
+.pills { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 4px; }
+.pill { font-size: .78rem; padding: 3px 10px; border-radius: 999px; background: var(--flat-soft); color: var(--flat); }
+.pill.warn { background: var(--warn-soft); color: var(--warn); }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; margin-top: 12px; }
+.kpi { border: 1px solid var(--line); border-top: 3px solid var(--flat); border-radius: 10px; padding: 8px 10px; }
+.kpi.up { border-top-color: var(--up); } .kpi.down { border-top-color: var(--down); }
+.kpi .k { font-size: .75rem; color: var(--muted); }
+.kpi .v { font-weight: 700; font-variant-numeric: tabular-nums; }
+.kpi .c { font-size: .8rem; font-variant-numeric: tabular-nums; }
+.up-t { color: var(--up); } .down-t { color: var(--down); } .flat-t { color: var(--muted); }
+.bars { font-size: .85rem; font-variant-numeric: tabular-nums; }
+.bars .g { font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 10px 0 4px; }
+.bar { display: grid; grid-template-columns: minmax(84px, 30%) 1fr 64px; align-items: center; gap: 8px; padding: 3px 0; }
+.bar .n { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bar .track { position: relative; height: 12px; border-left: 0; }
+.bar .track::before { content: ""; position: absolute; left: 50%; top: -3px; bottom: -3px; border-left: 1px solid var(--line); }
+.bar .fill { position: absolute; top: 0; height: 100%; border-radius: 3px; }
+.bar .fill.up { left: 50%; background: var(--up); } .bar .fill.down { right: 50%; background: var(--down); }
+.bar .pct { text-align: right; }
+.bar.approx { opacity: .6; }
+.flows { width: 100%; border-collapse: collapse; font-size: .88rem; }
+.flows td { padding: 6px 4px; border-top: 1px solid var(--line); vertical-align: top; }
+.flows td:first-child { white-space: nowrap; font-weight: 600; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.box { border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; font-size: .88rem; }
+.box ul { margin: 4px 0 0; padding-left: 18px; }
+.money ol { margin: 0; padding-left: 20px; font-size: .92rem; }
+.small { font-size: .8rem; color: var(--muted); }
+.small a { color: var(--muted); }
+.insights { width: 100%; border-collapse: collapse; font-size: .92rem; background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.insights th, .insights td { text-align: left; padding: 10px 12px; border-top: 1px solid var(--line); vertical-align: top; }
+.insights th { border-top: 0; font-size: .8rem; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+.closing { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
+.closing ul { margin: 0 0 10px; padding-left: 20px; }
+@media (max-width: 480px) { .cols { grid-template-columns: 1fr; } }
+footer { color: var(--muted); font-size: .85rem; margin-top: 40px; text-align: center; }
+</style></head><body><div class="wrap">
+<header><h1>📚 Deep Dive</h1>
+<p class="date">Saturday, 21/11/2026 · 7 bài · ⏱ khoảng 90 phút</p></header>
+<nav><a href="#business">🧠 Mô hình kinh doanh</a><a href="#marketing">📣 Marketing</a><a href="#growth">📈 Growth</a><a href="#finance">💵 Tài chính</a></nav>
+<section id="business"><h2>🧠 Mô hình kinh doanh</h2>
+<article class="card">
+<div class="meta">#1 · Trends.vc · ⏱ 15 phút</div>
+<h3><a href="https://trends.vc/goal-based-ai-agents-cloud-bill-cuts-1-metric-startups-runaway-ad-spend/" target="_blank" rel="noopener">Goal-Based AI Agents: Cloud Bill Cuts, 1-Metric Startups, Runaway Ad Spend</a></h3>
+<p>💡 Bài viết mô tả làn sóng AI agent được giao hẳn một chỉ số kinh doanh (churn, chi phí cloud, tỷ lệ chuyển đổi, chi phí quảng cáo trên mỗi khách hàng) và tự chạy trong nhiều tháng, kèm cảnh báo rằng AI sẽ làm đúng y những gì ta yêu cầu — rất đáng đọc khi bạn đang nghĩ về tự động hóa trong ngân hàng số.</p>
+<p>🧠 Bài học là giá trị nằm ở việc chịu trách nhiệm dịch chuyển một con số cụ thể, chứ không phải ở việc gửi thêm cảnh báo hay dashboard; và chọn sai con số mục tiêu thì tự động hóa sẽ phóng đại sai lầm.</p>
+<p class="q">❓ Nếu bạn phải giao cho một agent đúng một chỉ số của sản phẩm mình trong sáu tháng tới, bạn chọn chỉ số nào và những ràng buộc nào phải đặt ra để nó không tối ưu theo cách gây hại?</p>
+</article>
+<article class="card">
+<div class="meta">#2 · Trends.vc · ⏱ 14 phút</div>
+<h3><a href="https://trends.vc/why-does-1000-of-new-mrr-cap-out-at-20000/" target="_blank" rel="noopener">🧮 Why Does $1,000 of New MRR Cap Out at $20,000?</a></h3>
+<p>💡 Bản tin tổng hợp các phát hiện của founder — từ công cụ tối ưu chi phí token, bán đào tạo AI thay vì audit, đến trần doanh thu của SaaS và dự đoán rằng các app roleplay lớn sẽ cho chat miễn phí rồi kiếm tiền bằng quảng cáo.</p>
+<p>🧠 Bài học là mỗi mô hình doanh thu đều có trần và có cấu trúc chi phí riêng, nên khi chi phí phục vụ mỗi lần dùng tăng lên thì cách kiếm tiền phải được thiết kế lại chứ không chỉ tăng giá.</p>
+<p class="q">❓ Mô hình doanh thu hiện tại của sản phẩm bạn sẽ chạm trần ở đâu, và chi phí phục vụ mỗi lần người dùng tương tác đang đi theo hướng nào?</p>
+</article>
+<article class="card">
+<div class="meta">#3 · Trends.vc · ⏱ 15 phút</div>
+<h3><a href="https://trends.vc/ai-roleplay-apps-korean-playbooks-18-ratings-app-store-bans/" target="_blank" rel="noopener">AI Roleplay Apps: Korean Playbooks, 18+ Ratings, App Store Bans</a></h3>
+<p>💡 Bài phân tích ngành app roleplay AI: ra mắt trên web trước rồi mới lên app, tính phí cho &#x27;trí nhớ&#x27; của nhân vật, rủi ro bản quyền và việc Apple gỡ một số app lớn khỏi App Store.</p>
+<p>🧠 Bài học là phụ thuộc vào một kênh phân phối do người khác kiểm soát là rủi ro sống còn, nên cần một kênh trực tiếp mà không ai gỡ được của bạn.</p>
+<p class="q">❓ Sản phẩm của bạn phụ thuộc vào kênh hay đối tác nào mà nếu họ chặn bạn ngày mai thì bạn mất quyền tiếp cận khách hàng?</p>
+</article>
+</section>
+<section id="marketing"><h2>📣 Marketing</h2>
+<article class="card">
+<div class="meta">#4 · Demand Curve · ⏱ 8 phút</div>
+<h3><a href="https://www.demandcurve.com/newsletters/growth-newsletter-353" target="_blank" rel="noopener">Turning bad reviews into ads, knowing when to hold off on paid, and a way to get mentions from AI search.</a></h3>
+<p>💡 Bản tin tăng trưởng với ba ý: biến đánh giá tiêu cực thành quảng cáo (kiểu quảng cáo một sao của Snowbird), biết khi nào nên hoãn chi tiền quảng cáo, và vì sao trang thư mục bạn đang trả tiền có thể vô hình với AI search.</p>
+<p>🧠 Bài học là một điểm yếu bị khách phàn nàn có thể trở thành thông điệp định vị mạnh nếu nó thu hút đúng tệp khách, và không phải lúc nào cũng nên mở khóa quảng cáo trả phí.</p>
+<p class="q">❓ Lời phàn nàn lặp đi lặp lại nào về sản phẩm của bạn thực ra là tín hiệu thu hút đúng nhóm khách hàng mục tiêu?</p>
+</article>
+<article class="card">
+<div class="meta">#5 · Demand Curve · ⏱ 8 phút</div>
+<h3><a href="https://www.demandcurve.com/newsletters/growth-newsletter-352" target="_blank" rel="noopener">Scary high CACs, The Blair Witch Project’s brilliant launch, and ghostly lost sales calls.</a></h3>
+<p>💡 Bản tin phân tích cách ra mắt của The Blair Witch Project, bài học từ những cuộc gọi bán hàng bị bỏ ngang, và vì sao CAC cao bất thường chưa chắc là vấn đề.</p>
+<p>🧠 Bài học là ngôn ngữ marketing tốt nhất thường nằm ở các giao dịch bạn thua chứ không chỉ ở các deal thắng, và một chỉ số xấu phải được đọc cùng giá trị vòng đời chứ không đứng một mình.</p>
+<p class="q">❓ Bạn đã bao giờ ngồi nghe lại những khách hàng từ chối hoặc bỏ ngang sản phẩm của mình để lấy đúng câu chữ họ dùng chưa?</p>
+</article>
+</section>
+<section id="growth"><h2>📈 Growth</h2>
+<article class="card">
+<div class="meta">#6 · Elena&#x27;s Growth Scoop · ⏱ 15 phút</div>
+<h3><a href="https://www.elenaverna.com/p/how-did-lovable-grow-so-fast" target="_blank" rel="noopener">How did Lovable grow so fast?</a></h3>
+<p>💡 Elena Verna kể cách Lovable tăng trưởng và khẳng định không có &#x27;growth hack&#x27; duy nhất, đồng thời đề xuất Whitewater Framework: thị trường biến động nhanh tạo ra dòng chảy, việc của bạn là đóng được chiếc bè bắt lấy cơ hội đó.</p>
+<p>🧠 Bài học là tăng trưởng phi thường đến từ sự giao thoa giữa thời điểm thị trường và năng lực vận hành của cả công ty, chứ không từ một chiến thuật hay một phòng ban.</p>
+<p class="q">❓ Đâu là &#x27;dòng nước xiết&#x27; trong thị trường tài chính số ở Việt Nam hiện nay, và tổ chức của bạn đã đủ sẵn sàng để bắt lấy nó chưa?</p>
+</article>
+</section>
+<section id="finance"><h2>💵 Tài chính</h2>
+<article class="card">
+<div class="meta">#7 · Damodaran, Musings on Markets · ⏱ 15 phút</div>
+<h3><a href="https://aswathdamodaran.blogspot.com/feeds/3058978561756670711/comments/default" target="_blank" rel="noopener">The Rocky Road from Aggregate to Per Share Value: Anthropic&#x27;s IPO update</a></h3>
+<p>💡 Damodaran đi từ định giá tổng thể xuống giá trị mỗi cổ phần cho Anthropic, chỉ ra việc đếm số cổ phần bị rối bởi nhiều hạng cổ phiếu và lương thưởng bằng cổ phiếu, cùng tác động của diễn biến vĩ mô lên định giá.</p>
+<p>🧠 Bài học là giá trị trên mỗi cổ phần của bạn phụ thuộc vào mẫu số chứ không chỉ tử số, nên cấu trúc sở hữu và pha loãng là quyết định kinh doanh chứ không phải thủ tục giấy tờ.</p>
+<p class="q">❓ Nếu bạn khởi nghiệp và trả lương một phần bằng cổ phần, bạn sẽ theo dõi mức pha loãng của chính mình như thế nào qua từng vòng gọi vốn?</p>
+</article>
+</section>
+<p class="date">Tuần này chưa có bài cho: 📊 Thị trường, 🛠 Builders.</p>
+<footer>Còn 7 bài trong hàng đợi.</footer>
+</div></body></html>

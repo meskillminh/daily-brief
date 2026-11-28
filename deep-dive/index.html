@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Deep Dive — Saturday, 28/11/2026</title>
+<style>
+:root {
+  --bg: #f6f5f1; --card: #ffffff; --text: #1d1d1f; --muted: #6b6b70; --line: #e4e2dc;
+  --accent: #0b6e4f; --accent-soft: #e3f1ec; --concept: #fff6e0; --concept-line: #f0d9a0;
+  --up: #0f7a45; --up-soft: #dff2e7; --down: #b3261e; --down-soft: #f9e1df;
+  --warn: #9a6200; --warn-soft: #fbefd6; --flat: #2d5fa8; --flat-soft: #e2ebf8;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121214; --card: #1c1c1f; --text: #ececef; --muted: #9a9aa2; --line: #2c2c31;
+    --accent: #4cc39a; --accent-soft: #173229; --concept: #2a2415; --concept-line: #5a4a24;
+    --up: #4fc98a; --up-soft: #16301f; --down: #f2867d; --down-soft: #3a1b19;
+    --warn: #e8b45a; --warn-soft: #33270f; --flat: #8fb3ec; --flat-soft: #1a2638;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+.wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 64px; }
+header h1 { font-size: 1.6rem; margin: 0 0 4px; letter-spacing: -0.01em; }
+.date { color: var(--muted); margin: 0 0 16px; }
+.overview { font-size: 1.05rem; margin: 0 0 20px; }
+nav {
+  position: sticky; top: 0; z-index: 1; background: var(--bg);
+  display: flex; gap: 8px; overflow-x: auto; padding: 10px 0; margin-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+nav a {
+  flex: none; text-decoration: none; color: var(--text); background: var(--card);
+  border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: .9rem;
+}
+.concept {
+  background: var(--concept); border: 1px solid var(--concept-line); border-radius: 14px;
+  padding: 16px 18px; margin: 16px 0 8px;
+}
+.concept .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.concept h2 { margin: 4px 0 8px; font-size: 1.2rem; }
+.concept p { margin: 0 0 8px; }
+.concept .eg { font-size: .9rem; color: var(--muted); margin: 0; }
+.concept .eg a { color: var(--accent); }
+section h2 { font-size: 1.25rem; margin: 32px 0 12px; scroll-margin-top: 64px; }
+.card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+  padding: 14px 16px; margin: 0 0 12px;
+}
+.meta { font-size: .8rem; color: var(--muted); margin-bottom: 4px; }
+.card h3 { font-size: 1.05rem; margin: 0 0 8px; line-height: 1.4; }
+.card h3 a { color: var(--text); text-decoration: none; }
+.card h3 a:hover { text-decoration: underline; }
+.card p { margin: 0 0 6px; font-size: .95rem; }
+.card .q { color: var(--muted); font-style: italic; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.actions a {
+  text-decoration: none; font-size: .88rem; padding: 6px 12px; border-radius: 8px;
+  background: var(--accent-soft); color: var(--accent); font-weight: 600;
+}
+.money { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; margin: 16px 0 8px; }
+.money .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.money h2 { margin: 4px 0 6px; font-size: 1.2rem; scroll-margin-top: 64px; }
+.money h3 { font-size: .95rem; margin: 18px 0 8px; }
+.money p { margin: 0 0 8px; font-size: .95rem; }
+.pills { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 4px; }
+.pill { font-size: .78rem; padding: 3px 10px; border-radius: 999px; background: var(--flat-soft); color: var(--flat); }
+.pill.warn { background: var(--warn-soft); color: var(--warn); }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; margin-top: 12px; }
+.kpi { border: 1px solid var(--line); border-top: 3px solid var(--flat); border-radius: 10px; padding: 8px 10px; }
+.kpi.up { border-top-color: var(--up); } .kpi.down { border-top-color: var(--down); }
+.kpi .k { font-size: .75rem; color: var(--muted); }
+.kpi .v { font-weight: 700; font-variant-numeric: tabular-nums; }
+.kpi .c { font-size: .8rem; font-variant-numeric: tabular-nums; }
+.up-t { color: var(--up); } .down-t { color: var(--down); } .flat-t { color: var(--muted); }
+.bars { font-size: .85rem; font-variant-numeric: tabular-nums; }
+.bars .g { font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 10px 0 4px; }
+.bar { display: grid; grid-template-columns: minmax(84px, 30%) 1fr 64px; align-items: center; gap: 8px; padding: 3px 0; }
+.bar .n { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bar .track { position: relative; height: 12px; border-left: 0; }
+.bar .track::before { content: ""; position: absolute; left: 50%; top: -3px; bottom: -3px; border-left: 1px solid var(--line); }
+.bar .fill { position: absolute; top: 0; height: 100%; border-radius: 3px; }
+.bar .fill.up { left: 50%; background: var(--up); } .bar .fill.down { right: 50%; background: var(--down); }
+.bar .pct { text-align: right; }
+.bar.approx { opacity: .6; }
+.flows { width: 100%; border-collapse: collapse; font-size: .88rem; }
+.flows td { padding: 6px 4px; border-top: 1px solid var(--line); vertical-align: top; }
+.flows td:first-child { white-space: nowrap; font-weight: 600; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.box { border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; font-size: .88rem; }
+.box ul { margin: 4px 0 0; padding-left: 18px; }
+.money ol { margin: 0; padding-left: 20px; font-size: .92rem; }
+.small { font-size: .8rem; color: var(--muted); }
+.small a { color: var(--muted); }
+.insights { width: 100%; border-collapse: collapse; font-size: .92rem; background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.insights th, .insights td { text-align: left; padding: 10px 12px; border-top: 1px solid var(--line); vertical-align: top; }
+.insights th { border-top: 0; font-size: .8rem; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+.closing { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
+.closing ul { margin: 0 0 10px; padding-left: 20px; }
+@media (max-width: 480px) { .cols { grid-template-columns: 1fr; } }
+footer { color: var(--muted); font-size: .85rem; margin-top: 40px; text-align: center; }
+</style></head><body><div class="wrap">
+<header><h1>📚 Deep Dive</h1>
+<p class="date">Saturday, 28/11/2026 · 6 bài · ⏱ khoảng 86 phút</p></header>
+<nav><a href="#business">🧠 Mô hình kinh doanh</a><a href="#marketing">📣 Marketing</a><a href="#growth">📈 Growth</a><a href="#finance">💵 Tài chính</a></nav>
+<section id="business"><h2>🧠 Mô hình kinh doanh</h2>
+<article class="card">
+<div class="meta">#1 · Trends.vc · ⏱ 14 phút</div>
+<h3><a href="https://trends.vc/agent-sandboxes-299-iphone-simulators-sandbox-escapes-billed-while-idle/" target="_blank" rel="noopener">Agent Sandboxes: $299 iPhone Simulators, Sandbox Escapes, Billed While Idle</a></h3>
+<p>💡 Bài phân tích thị trường &#x27;agent sandbox&#x27; – những máy tính cô lập cho AI agent thuê theo tác vụ – điểm qua các nhóm nhà cung cấp (sandbox, sandbox bền bỉ, Mac cloud, trình duyệt đám mây) và các dự đoán về cách tính phí, điều đáng quan tâm khi bạn đang cân nhắc đưa AI agent vào sản phẩm ngân hàng số.</p>
+<p>🧠 Khi một công nghệ mới tạo ra rủi ro vận hành (agent chạy lệnh sai có thể rò rỉ hay xóa dữ liệu), cơ hội kinh doanh thường nằm ở lớp hạ tầng an toàn và ở mô hình định giá công bằng hơn đối thủ, chẳng hạn không tính tiền lúc hệ thống chờ.</p>
+<p class="q">❓ Nếu bạn cho AI agent chạy trên hệ thống của mình, bạn đang cô lập nó ở đâu và bạn đang trả tiền cho thời gian &#x27;chờ&#x27; nào mà khách hàng không nhận được giá trị?</p>
+</article>
+<article class="card">
+<div class="meta">#2 · Trends.vc · ⏱ 14 phút</div>
+<h3><a href="https://trends.vc/whats-1000-of-new-mrr-actually-worth/" target="_blank" rel="noopener">📈 What’s $1,000 of New MRR Actually Worth?</a></h3>
+<p>💡 Bản tin tổng hợp công cụ, chiến thắng của thành viên và một dự đoán rằng các startup dạy học sẽ chuyển từ chủ đề chung sang khóa học cho người có kỳ thi, kèm câu hỏi cốt lõi: 1.000 USD MRR mới thực sự đáng giá bao nhiêu.</p>
+<p>🧠 Người học có một kỳ thi phía trước chịu chi hơn người học vì tò mò – hãy chọn phân khúc có &#x27;deadline&#x27; và hậu quả rõ ràng thay vì nhu cầu mơ hồ.</p>
+<p class="q">❓ Nhóm khách hàng nào của sản phẩm bạn đang có một &#x27;kỳ thi&#x27; – một thời hạn hay hậu quả cụ thể – khiến họ sẵn sàng trả tiền ngay?</p>
+</article>
+<article class="card">
+<div class="meta">#3 · Trends.vc · ⏱ 14 phút</div>
+<h3><a href="https://trends.vc/how-did-2400-mrr-become-50000-in-1-year/" target="_blank" rel="noopener">💲 How Did $2,400 MRR Become $50,000 in 1 Year?</a></h3>
+<p>💡 Bản tin kể câu chuyện tăng trưởng doanh thu định kỳ trong một năm, kèm dự đoán rằng các app khóa học AI sẽ cho bài học miễn phí và thu phí phần mở rộng, vì mọi app đều phải cạnh tranh với gia sư miễn phí trong ChatGPT và Gemini.</p>
+<p>🧠 Khi tính năng lõi của bạn bị các nền tảng lớn biến thành miễn phí, bạn phải dời điểm thu tiền sang phần nâng cao, và nên dùng ma sát có chủ đích: bỏ ma sát cho hành vi tốt, thêm ma sát cho hành vi xấu.</p>
+<p class="q">❓ Phần nào trong sản phẩm của bạn sẽ sớm miễn phí vì nền tảng lớn làm thay, và bạn sẽ chuyển doanh thu sang đâu?</p>
+</article>
+</section>
+<section id="marketing"><h2>📣 Marketing</h2>
+<article class="card">
+<div class="meta">#4 · Demand Curve · ⏱ 8 phút</div>
+<h3><a href="https://www.demandcurve.com/newsletters/growth-newsletter-354" target="_blank" rel="noopener">Hooks hiding in 3-star reviews, when a higher conversion rate backfires, and what comes after ugly ads.</a></h3>
+<p>💡 Số bản tin tăng trưởng này bàn về việc tìm hook trong các đánh giá 3 sao của đối thủ, tình huống tỷ lệ chuyển đổi cao hơn lại gây hại, và điều gì đến sau làn sóng quảng cáo &#x27;xấu&#x27;.</p>
+<p>🧠 Sản phẩm tốt vẫn thua sản phẩm kém hơn nếu đối thủ kể câu chuyện giá trị rõ hơn, nên thông điệp là một hệ thống phải xây chứ không phải câu chữ ngẫu hứng.</p>
+<p class="q">❓ Nếu đọc các đánh giá 3 sao về đối thủ của bạn tại Việt Nam, bạn sẽ rút ra thông điệp nào mà trang sản phẩm của bạn chưa nói?</p>
+</article>
+</section>
+<section id="growth"><h2>📈 Growth</h2>
+<article class="card">
+<div class="meta">#5 · Elena&#x27;s Growth Scoop · ⏱ 16 phút</div>
+<h3><a href="https://www.elenaverna.com/p/confessions-of-a-recovering-full" target="_blank" rel="noopener">Confessions of a recovering Full-Time Employee</a></h3>
+<p>💡 Bài viết là lời tự thuật của một người từ nhân viên toàn thời gian chuyển sang solopreneur kết hợp các hợp đồng fractional, với lập luận rằng ta đánh giá thấp mặt lợi của làm riêng và đánh giá quá cao sự ổn định của công việc toàn thời gian.</p>
+<p>🧠 Con đường ra khởi nghiệp thường không phải một cú nhảy, mà là xây dần &#x27;side hustle&#x27; và flywheel song song với công việc chính cho tới khi chúng tự đứng được.</p>
+<p class="q">❓ Bạn có thể bắt đầu dự án phụ nào ngay tháng này để kiểm chứng năng lực kinh doanh của mình mà không cần nghỉ việc ở ngân hàng?</p>
+</article>
+</section>
+<section id="finance"><h2>💵 Tài chính</h2>
+<article class="card">
+<div class="meta">#6 · Damodaran, Musings on Markets · ⏱ 20 phút</div>
+<h3><a href="https://aswathdamodaran.blogspot.com/feeds/6964182067537376998/comments/default" target="_blank" rel="noopener">The Cost of Human Frailty: Nvidia&#x27;s Jensen Huang Test!</a></h3>
+<p>💡 Damodaran mổ xẻ việc một CEO nổi tiếng rời ghế ảnh hưởng thế nào tới giá trị doanh nghiệp, bắt đầu bằng việc phân loại các vai trò của CEO, trong đó có vai người kể chuyện vì câu chuyện dẫn dắt định giá.</p>
+<p>🧠 Giá trị của một công ty gắn chặt với câu chuyện và với mức độ phụ thuộc vào một cá nhân – rủi ro &#x27;người sáng lập chủ chốt&#x27; là một biến số định giá thật sự.</p>
+<p class="q">❓ Nếu bạn rời sản phẩm hoặc công ty tương lai của mình trong ba tháng, phần giá trị nào sẽ mất đi và bạn giảm sự phụ thuộc đó bằng cách nào?</p>
+</article>
+</section>
+<p class="date">Tuần này chưa có bài cho: 📊 Thị trường, 🛠 Builders.</p>
+<footer>Còn 2 bài trong hàng đợi.</footer>
+</div></body></html>
